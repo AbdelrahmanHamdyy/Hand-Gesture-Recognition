@@ -9,8 +9,7 @@ INPUT_PATH = "../input/"
 def getFeatures(x_train):
     features = []
     for img in x_train:
-        fd = hog(resize(img, (128*4, 64*4)), orientations=9, pixels_per_cell=(14, 14),
-                 cells_per_block=(1, 1), visualize=False)
+        fd = hog(resize(img, (128*4, 64*4)), orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualize=False)
         features.append(fd)
 
     return np.array(features)
