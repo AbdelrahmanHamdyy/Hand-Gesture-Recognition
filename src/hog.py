@@ -11,8 +11,10 @@ featuresDict = {}
 def getFeatures(x_train):
     features = []
     for img in x_train:
-        normalizedImage=preprocess(img)
-        fd = hog(resize(normalizedImage, (128*4, 64*4)), orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualize=False)
+        img=segment(img)
+        img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+        fd = hog(resize(img, (128*4, 64*4)), orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualize=False)
         features.append(fd)
         
     return np.array(features)

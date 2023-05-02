@@ -5,6 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.svm import SVC
 
 def readImages(dataPath):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
@@ -12,9 +13,13 @@ def readImages(dataPath):
     x = []
     for fileName in files:
         img = cv.imread(dataPath + "/" + fileName)
+        if(img is None):
+            continue
+        print("===============",fileName+"=======================")
+        print(img)
         x.append(img)
         # counter=counter+1
-        # if(counter>20):
+        # if(counter>50):
         #     break
     return x
 
@@ -38,7 +43,7 @@ def saveToExcel(features_dict,file):
         result.to_excel(writer,sheet_name="Sheet1",index=False)
 
 ## get accuracy by KNN
-def getAccuracy(file):
+def getAccuracyKNN(file):
     # Load data from Excel file into a pandas DataFrame
     df = pd.read_excel(file, sheet_name="Sheet1")
 
@@ -48,10 +53,29 @@ def getAccuracy(file):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Train a KNN classifier on the training data
-    knn = KNeighborsClassifier(n_neighbors=3)
+    knn = KNeighborsClassifier(n_neighbors=5)
     knn.fit(X_train, y_train)
 
     # Make predictions on the test data and evaluate the model
     y_pred = knn.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    print('Accuracy: {:.2f}'.format(accuracy))
+
+## get accuracy by SVM
+def getAccuracySVM(file):
+    # Load data from Excel file into a pandas DataFrame
+    df = pd.read_excel(file, sheet_name="Sheet1")
+
+    # Split the data into training and testing sets
+    X = df.drop('Class', axis=1)
+    y = df['Class']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # Train an SVM model using the training data
+    svm_model = SVC(kernel='linear')
+    svm_model.fit(X_train, y_train)
+
+    # Predict the labels for the test data
+    y_pred = svm_model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     print('Accuracy: {:.2f}'.format(accuracy))
