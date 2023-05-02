@@ -11,11 +11,11 @@ def readImages(dataPath):
     counter=0
     x = []
     for fileName in files:
-        img = cv.imread(dataPath + "/" + fileName, 0)
+        img = cv.imread(dataPath + "/" + fileName)
         x.append(img)
-        counter=counter+1
-        if(counter>20):
-            break
+        # counter=counter+1
+        # if(counter>20):
+        #     break
     return x
 
 def showImages(imgs, labels):
