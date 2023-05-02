@@ -127,5 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-# exell sheet
+
+# excel sheet
 *.xlsx
+
+# Dataset
+dataset/
