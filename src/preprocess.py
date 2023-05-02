@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib as mpl
 from utils import showImages
 from sklearn.mixture import GaussianMixture
+from utils import *
 
 mpl.rcParams['image.cmap'] = 'gray'
 
@@ -42,22 +43,47 @@ def preprocess(img):
     return normalizedResult
 
 def segment(img):
-    print("Segmentation")
     # Convert image to HSV color space
-    # hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
+    hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 
     # Define range of color to segment (in HSV color space)
-    lowerColor = np.array([0, 100, 100])
-    upperColor = np.array([170, 255, 255])
+    lowerColor = np.array([0, 60, 60])
+    upperColor = np.array([20, 255, 255])
 
     # Create a mask based on the defined color range
-    mask = cv.inRange(img, lowerColor, upperColor)
+    mask = cv.inRange(hsv_img, lowerColor, upperColor)
 
     # Apply the mask to the original image
     result = cv.bitwise_and(img, img, mask=mask)
 
+    # Convert img to grayscale
+    result = cv.cvtColor(result, cv.COLOR_BGR2GRAY)
+
+    # Morphological Operations
+    
+    # Kernel
+    kernel = np.ones((7, 7), np.uint8)
+    kernel2 = np.ones((3, 3), np.uint8)
+    
+    # Apply morphological operations
+    result = cv.dilate(result, kernel, iterations=5)
+    result = cv.erode(result, kernel2, iterations=3)
+
     # Display result
-    showImages([result], ["Result"])
+    # showImages([result], ["Result"])
+    
+    return result
+
+def graySegment(img):
+    # Convert img to grayscale
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    
+    cv.imwrite("../output/gray.jpg", img)
+    
+    # Filter
+    gray_filtered = cv.inRange(img, 190, 255)
+    
+    cv.imwrite("../output/filtered_gray.jpg", gray_filtered)
     
 def gaussianMixture(img):
     # Convert to the YCrCb color space
@@ -85,8 +111,30 @@ def gaussianMixture(img):
     result = cv.bitwise_and(img, img, mask=np.uint8(mask * 255))
     return result
 
-if __name__ == '__main__':
-    img = cv.imread("../input/3.jpeg")
+def runSegmentation():
+    # img = cv.imread("../input/3.jpeg")
+    imgs = readImages("../input/")
     # preprocess(img)
-    segment(img)
+    # result = gaussianMixture(img)
+    for i in range(len(imgs)):
+        segmentationResult = segment(imgs[i]) 
+        cv.imwrite("../output2/result" + str(i) + ".jpeg", segmentationResult)
+    # showImages([segmentationResult], ["Result"])
+
+def adaptiveThresholding(img):
+    # Convert img to grayscale
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    adaptive_thresh = cv.adaptiveThreshold(img, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 2)
+    return adaptive_thresh
+
+def test():
+    img = cv.imread("../input/1_men (2).JPG")
+    result = segment(img) 
+    # result = adaptiveThresholding(img)
+    cv.imwrite("../output/result.jpeg", result)
+    # graySegment(img)
+
+if __name__ == '__main__':
+    runSegmentation()
+    # test()
     
