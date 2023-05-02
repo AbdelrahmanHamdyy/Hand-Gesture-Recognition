@@ -6,11 +6,12 @@ from utils import showImages
 mpl.rcParams['image.cmap'] = 'gray'
 
 def preprocess(img):
-    # Read image as grayscale
-    #img = cv.imread("../input/3.jpeg", 0)
-    print(img)
+
+    # Convert img to grayscale
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
     # Convert to black & white
-    (thresh, img) = cv.threshold(img, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
+    # (thresh, img) = cv.threshold(img, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
     
     # Smooth the image using a gaussian filter
     img = cv.GaussianBlur(img, (5, 5), 0)
@@ -33,10 +34,35 @@ def preprocess(img):
     
     result = cv.merge(planes)
     normalizedResult = cv.merge(normalizedPlanes)
-    return normalizedResult
+    
     # Show images
-    #showImages([img, result, normalizedResult], ["Input", "Result", "Norm Result"])
+    showImages([img, result, normalizedResult], ["Input", "Result", "Norm Result"])
+    
+    return normalizedResult
+
+def segment(img):
+    print("Segmentation")
+    # Convert image to HSV color space
+    # hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
+
+    # Define range of color to segment (in HSV color space)
+    lowerColor = np.array([0, 100, 100])
+    upperColor = np.array([170, 255, 255])
+
+    # Create a mask based on the defined color range
+    mask = cv.inRange(img, lowerColor, upperColor)
+
+    # Apply the mask to the original image
+    result = cv.bitwise_and(img, img, mask=mask)
+
+    # Display result
+    showImages([result], ["Result"])
+    
+def gaussianMixture():
+    
     
 if __name__ == '__main__':
-    preprocess()
+    img = cv.imread("../input/3.jpeg")
+    # preprocess(img)
+    segment(img)
     
