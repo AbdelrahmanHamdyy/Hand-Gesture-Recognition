@@ -25,6 +25,7 @@ def showImages(imgs, labels):
     for i in range(len(imgs)):
         cv.imshow(labels[i], imgs[i])
         cv.waitKey(0)
+    cv.destroyAllWindows()
 
 ## save to excel file
 def saveToExcel(features_dict,file):
