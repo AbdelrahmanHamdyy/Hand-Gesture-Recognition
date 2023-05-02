@@ -58,8 +58,31 @@ def segment(img):
     # Display result
     showImages([result], ["Result"])
     
-def gaussianMixture():
-    
+def gaussianMixture(img):
+    # Convert to the YCrCb color space
+    img_ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+
+    # Extract the Cr and Cb channels
+    cr = img_ycrcb[:, :, 1]
+    cb = img_ycrcb[:, :, 2]
+
+    # Concatenate the Cr and Cb channels
+    cr_cb = np.stack((cr, cb), axis=-1)
+
+    # Reshape the data for training the GMM
+    data = cr_cb.reshape((-1, 2))
+
+    # Fit a GMM to the data
+    gmm = GaussianMixture(n_components=2)
+    gmm.fit(data)
+
+    # Classify each pixel as hand or non-hand using the GMM
+    labels = gmm.predict(data)
+    mask = labels.reshape(cr_cb.shape[:2])
+
+    # Apply the mask to the original image to highlight the hand
+    result = cv2.bitwise_and(img, img, mask=np.uint8(mask * 255))
+    return result
     
 if __name__ == '__main__':
     img = cv.imread("../input/3.jpeg")
