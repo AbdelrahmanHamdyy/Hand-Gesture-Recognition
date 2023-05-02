@@ -5,12 +5,12 @@ from utils import showImages
 
 mpl.rcParams['image.cmap'] = 'gray'
 
-def preprocess():
+def preprocess(img):
     # Read image as grayscale
-    img = cv.imread("../input/3.jpeg", 0)
-    
+    #img = cv.imread("../input/3.jpeg", 0)
+    print(img)
     # Convert to black & white
-    # (thresh, img) = cv.threshold(img, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
+    (thresh, img) = cv.threshold(img, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
     
     # Smooth the image using a gaussian filter
     img = cv.GaussianBlur(img, (5, 5), 0)
@@ -33,9 +33,9 @@ def preprocess():
     
     result = cv.merge(planes)
     normalizedResult = cv.merge(normalizedPlanes)
-    
+    return normalizedResult
     # Show images
-    showImages([img, result, normalizedResult], ["Input", "Result", "Norm Result"])
+    #showImages([img, result, normalizedResult], ["Input", "Result", "Norm Result"])
     
 if __name__ == '__main__':
     preprocess()
