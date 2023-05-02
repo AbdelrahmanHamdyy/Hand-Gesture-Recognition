@@ -2,6 +2,7 @@ import cv2 as cv
 import numpy as np
 import matplotlib as mpl
 from utils import showImages
+from sklearn.mixture import GaussianMixture
 
 mpl.rcParams['image.cmap'] = 'gray'
 
@@ -60,7 +61,7 @@ def segment(img):
     
 def gaussianMixture(img):
     # Convert to the YCrCb color space
-    img_ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+    img_ycrcb = cv.cvtColor(img, cv.COLOR_BGR2YCrCb)
 
     # Extract the Cr and Cb channels
     cr = img_ycrcb[:, :, 1]
@@ -81,9 +82,9 @@ def gaussianMixture(img):
     mask = labels.reshape(cr_cb.shape[:2])
 
     # Apply the mask to the original image to highlight the hand
-    result = cv2.bitwise_and(img, img, mask=np.uint8(mask * 255))
+    result = cv.bitwise_and(img, img, mask=np.uint8(mask * 255))
     return result
-    
+
 if __name__ == '__main__':
     img = cv.imread("../input/3.jpeg")
     # preprocess(img)
