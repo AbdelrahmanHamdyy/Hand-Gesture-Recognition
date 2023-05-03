@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+input2
 # C extensions
 *.so
 
