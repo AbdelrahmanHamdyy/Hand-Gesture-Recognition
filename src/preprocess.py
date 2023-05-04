@@ -88,18 +88,25 @@ def segment(img):
 
     # Convert img to grayscale
     result = cv.cvtColor(result, cv.COLOR_BGR2GRAY)
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    
+    ################### Histogram Equalization
+    # img = cv.equalizeHist(img)
+    
+    # ################### Gaussian filter
+    # img = cv.GaussianBlur(img, (9, 9), 0)
     
     ################### Region Filling using Flood Fill
     # result = regionFilling(result)
 
     ################### Morphological Operations
     kernel = np.ones((11, 11), np.uint8)
-    # kernel2 = np.ones((5, 5), np.uint8)
-    # result = cv.erode(result, kernel2, iterations=5)
+    # kernel2 = np.ones((16, 16), np.uint8)
     result = cv.dilate(result, kernel, iterations=7)
-
+    
     ################### Region Filling using Contours
     result = contours(result)
+    # result = cv.erode(result, kernel2, iterations=12)
 
     ################### Apply Mask
     result = restoreImage(result, img)
