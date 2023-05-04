@@ -15,8 +15,8 @@ def readImages(dataPath):
         img = cv.imread(dataPath + "/" + fileName)
         if(img is None):
             continue
-        print("===============",fileName+"=======================")
-        print(img)
+        # print("===============",fileName+"=======================")
+        # print(img)
         x.append(img)
         # counter=counter+1
         # if(counter>50):
@@ -72,10 +72,11 @@ def getAccuracySVM(file):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     # Train an SVM model using the training data
-    svm_model = SVC(kernel='linear')
+    svm_model = SVC(kernel='linear', C=1.0)
     svm_model.fit(X_train, y_train)
 
     # Predict the labels for the test data
-    y_pred = svm_model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
+    # y_pred = svm_model.predict(X_test)
+    # accuracy = accuracy_score(y_test, y_pred)
+    accuracy = svm_model.score(X_test, y_test)
     print('Accuracy: {:.2f}'.format(accuracy))
