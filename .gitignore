@@ -141,3 +141,6 @@ testInput/
 # Output
 output/
 output2/
+
+# Vscode
+.vscode/
