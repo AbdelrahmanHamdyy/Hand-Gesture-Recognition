@@ -175,9 +175,11 @@ def preprocess(img):
     # Convert original image to grayscale
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-    # Dilation
+    # Structuring Element for Morphological Operations
     kernel = np.ones((24, 24), np.uint8)
-    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=20)
+
+    # Dilation
+    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=18)
 
     # Draw left & right borders
     borderImg = setSideBorders(dilatedImg, val=128)
