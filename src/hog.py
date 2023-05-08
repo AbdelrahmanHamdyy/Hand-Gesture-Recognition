@@ -62,7 +62,7 @@ def applyPCA(features):
 def getFeatures(x_train):
     features = []
     for img in x_train:
-        img = segment(img)
+        img = preprocess(img)
 
         # fd = hog_features(resize(img, (128*4, 64*4)))
         fd = hog(resize(img, (128*4, 64*4)), orientations=9,
@@ -106,9 +106,7 @@ def SVM(x_train, x_test, y_train, y_test):
     svm_model = SVC(kernel='linear', C=1.0)
     svm_model.fit(x_train, y_train)
 
-    # Predict the labels for the test data
-    # y_pred = svm_model.predict(x_test)
-    # accuracy = accuracy_score(y_test, y_pred)
+    # Predict labels for the test data
     accuracy = svm_model.score(x_test, y_test)
     print('Accuracy: {:.2f}'.format(accuracy))
 

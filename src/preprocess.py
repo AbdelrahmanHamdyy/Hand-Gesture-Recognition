@@ -8,21 +8,11 @@ from utils import *
 mpl.rcParams['image.cmap'] = 'gray'
 
 
-def preprocess(img):
-
+def removeShadows(img):
     # Convert img to grayscale
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-    # Convert to black & white
-    # (thresh, img) = cv.threshold(img, 128, 255, cv.THRESH_BINARY | cv.THRESH_OTSU)
-
-    # Smooth the image using a gaussian filter
-    img = cv.GaussianBlur(img, (5, 5), 0)
-
-    # Smooth the image using a median filter
-    # img = cv.medianBlur(img, 5)
-
-    # Remove shadows
+    # Split image channels
     rgbPlanes = cv.split(img)
 
     planes = []
@@ -46,9 +36,61 @@ def preprocess(img):
     return normalizedResult
 
 
+def graySegment(img):
+    # Convert img to grayscale
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    cv.imwrite("../output/gray.jpg", img)
+
+    # Filter
+    gray_filtered = cv.inRange(img, 190, 255)
+
+    cv.imwrite("../output/filtered_gray.jpg", gray_filtered)
+
+
+def adaptiveThresholding(img):
+    # Convert img to grayscale
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    # Apply Adaptive Thresholding
+    adaptive_thresh = cv.adaptiveThreshold(
+        img, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 2)
+    return adaptive_thresh
+
+
+def gaussianMixture(img):
+    # Convert to the YCrCb color space
+    img_ycrcb = cv.cvtColor(img, cv.COLOR_BGR2YCrCb)
+
+    # Extract the Cr and Cb channels
+    cr = img_ycrcb[:, :, 1]
+    cb = img_ycrcb[:, :, 2]
+
+    # Concatenate the Cr and Cb channels
+    cr_cb = np.stack((cr, cb), axis=-1)
+
+    # Reshape the data for training the GMM
+    data = cr_cb.reshape((-1, 2))
+
+    # Fit a GMM to the data
+    gmm = GaussianMixture(n_components=2)
+    gmm.fit(data)
+
+    # Classify each pixel as hand or non-hand using the GMM
+    labels = gmm.predict(data)
+    mask = labels.reshape(cr_cb.shape[:2])
+
+    # Apply the mask to the original image to highlight the hand
+    result = cv.bitwise_and(img, img, mask=np.uint8(mask * 255))
+
+    return result
+
+
 def contours(img):
+    # Find contours
     contour, hier = cv.findContours(img, cv.RETR_CCOMP, cv.CHAIN_APPROX_SIMPLE)
 
+    # Draw contours
     for cnt in contour:
         cv.drawContours(img, [cnt], 0, 255, -1)
 
@@ -80,6 +122,32 @@ def restoreImage(mask, img):
     return cv.bitwise_and(img, img, mask=mask)
 
 
+def drawSideBorders(img):
+    img[:, 0] = 128
+    img[:, img.shape[1] - 1] = 128
+    return img
+
+
+def crop(img):
+    # apply binary thresholding to the grayscale image
+    _, thresh = cv.threshold(img, 0, 255, cv.THRESH_BINARY)
+
+    # find the contours in the binary image
+    contours, _ = cv.findContours(
+        thresh, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+
+    # find the largest contour by area
+    max_contour = max(contours, key=cv.contourArea)
+
+    # create a bounding rectangle around the contour
+    x, y, w, h = cv.boundingRect(max_contour)
+
+    # crop the image to the bounding rectangle
+    crop_img = img[y:y+h, x:x+w]
+
+    return crop_img
+
+
 def segment(img):
     # Convert image to HSV color space
     hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
@@ -96,99 +164,47 @@ def segment(img):
 
     # Convert img to grayscale
     result = cv.cvtColor(result, cv.COLOR_BGR2GRAY)
+
+    return result
+
+
+def preprocess(img):
+    # Segmentation
+    segmentedImg = segment(img)
+
+    # Convert original image to grayscale
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-    # Histogram Equalization
-    # img = cv.equalizeHist(img)
-
-    # ################### Gaussian filter
-    # img = cv.GaussianBlur(img, (9, 9), 0)
-
-    # Region Filling using Flood Fill
-    # result = regionFilling(result)
-
-    # Morphological Operations
+    # Dilation
     kernel = np.ones((24, 24), np.uint8)
-    # kernel2 = np.ones((16, 16), np.uint8)
-    result = cv.dilate(result, kernel, iterations=20)
+    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=18)
+
+    # Draw left & right borders
+    borderImg = drawSideBorders(dilatedImg)
 
     # Region Filling using Contours
-    result = contours(result)
-    # result = cv.erode(result, kernel2, iterations=7)
+    imgWithContours = contours(borderImg)
 
     # Apply Mask
-    result = restoreImage(result, img)
+    maskedImg = restoreImage(imgWithContours, img)
 
-    # Display result
-    # showImages([result], ["Result"])
+    # Crop image to fit the hand exactly
+    croppedImg = crop(maskedImg)
 
-    return result
-
-
-def graySegment(img):
-    # Convert img to grayscale
-    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-
-    cv.imwrite("../output/gray.jpg", img)
-
-    # Filter
-    gray_filtered = cv.inRange(img, 190, 255)
-
-    cv.imwrite("../output/filtered_gray.jpg", gray_filtered)
-
-
-def gaussianMixture(img):
-    # Convert to the YCrCb color space
-    img_ycrcb = cv.cvtColor(img, cv.COLOR_BGR2YCrCb)
-
-    # Extract the Cr and Cb channels
-    cr = img_ycrcb[:, :, 1]
-    cb = img_ycrcb[:, :, 2]
-
-    # Concatenate the Cr and Cb channels
-    cr_cb = np.stack((cr, cb), axis=-1)
-
-    # Reshape the data for training the GMM
-    data = cr_cb.reshape((-1, 2))
-
-    # Fit a GMM to the data
-    gmm = GaussianMixture(n_components=2)
-    gmm.fit(data)
-
-    # Classify each pixel as hand or non-hand using the GMM
-    labels = gmm.predict(data)
-    mask = labels.reshape(cr_cb.shape[:2])
-
-    # Apply the mask to the original image to highlight the hand
-    result = cv.bitwise_and(img, img, mask=np.uint8(mask * 255))
-    return result
+    return croppedImg
 
 
 def runSegmentation():
-    # img = cv.imread("../input/3.jpeg")
     imgs = readImages("../input/")
-    # preprocess(img)
-    # result = gaussianMixture(img)
     for i in range(len(imgs)):
-        segmentationResult = segment(imgs[i])
+        segmentationResult = preprocess(imgs[i])
         cv.imwrite("../output2/result" + str(i) + ".jpeg", segmentationResult)
-    # showImages([segmentationResult], ["Result"])
-
-
-def adaptiveThresholding(img):
-    # Convert img to grayscale
-    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-    adaptive_thresh = cv.adaptiveThreshold(
-        img, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 2)
-    return adaptive_thresh
 
 
 def test():
     img = cv.imread("../input/1_men (2).JPG")
-    result = segment(img)
-    # result = adaptiveThresholding(img)
+    result = preprocess(img)
     cv.imwrite("../output/result.jpeg", result)
-    # graySegment(img)
 
 
 if __name__ == '__main__':
