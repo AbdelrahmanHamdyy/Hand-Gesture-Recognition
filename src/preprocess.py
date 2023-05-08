@@ -122,9 +122,9 @@ def restoreImage(mask, img):
     return cv.bitwise_and(img, img, mask=mask)
 
 
-def drawSideBorders(img):
-    img[:, 0] = 128
-    img[:, img.shape[1] - 1] = 128
+def setSideBorders(img, val):
+    img[:, 0] = val
+    img[:, img.shape[1] - 1] = val
     return img
 
 
@@ -177,10 +177,10 @@ def preprocess(img):
 
     # Dilation
     kernel = np.ones((24, 24), np.uint8)
-    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=18)
+    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=20)
 
     # Draw left & right borders
-    borderImg = drawSideBorders(dilatedImg)
+    borderImg = setSideBorders(dilatedImg, val=128)
 
     # Region Filling using Contours
     imgWithContours = contours(borderImg)
