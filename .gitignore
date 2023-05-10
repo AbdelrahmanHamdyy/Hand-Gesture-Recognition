@@ -133,6 +133,7 @@ dmypy.json
 
 # Dataset
 dataset/
+dataset-output/
 Dataset_0-5/
 
 # Input

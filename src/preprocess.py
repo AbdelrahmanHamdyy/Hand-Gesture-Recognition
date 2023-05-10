@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 import matplotlib as mpl
-from utils import showImages
+# from utils import showImages
 from sklearn.mixture import GaussianMixture
 from utils import *
 

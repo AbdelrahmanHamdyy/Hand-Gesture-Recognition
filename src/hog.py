@@ -81,7 +81,7 @@ def saveFeatures():
         print(i)
         print("------------------------------")
         INPUT_PATH = "../Dataset_0-5/"+str(i)
-        imgs = readImages(INPUT_PATH)
+        imgs = readImages(INPUT_PATH,i)
         features = getFeatures(imgs)
 
         featuresDict[str(i)] = features
@@ -117,7 +117,7 @@ def run():
         x, y, test_size=0.2, random_state=42)
 
     SVM(x_train, x_test, y_train, y_test)
-    # saveToExcel(featuresDict,"../output.xlsx")
+    # saveToCSV(featuresDict,"../output.csv")
 
 
 if __name__ == '__main__':

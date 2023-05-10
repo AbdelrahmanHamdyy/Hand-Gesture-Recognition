@@ -6,8 +6,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
+from preprocess import *
 
-def readImages(dataPath):
+
+def readImages(dataPath,num):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
     counter=0
     x = []
@@ -15,11 +17,13 @@ def readImages(dataPath):
         img = cv.imread(dataPath + "/" + fileName)
         if(img is None):
             continue
+        # img = preprocess(img)
+        # cv.imwrite("../Dataset-output" + "/"+ str(num)+"/"+ str(fileName),img)
         # print("===============",fileName+"=======================")
         # print(img)
         x.append(img)
         # counter=counter+1
-        # if(counter>50):
+        # if(counter>2):
         #     break
     return x
 
@@ -41,6 +45,17 @@ def saveToExcel(features_dict,file):
             df['Class'] = label
             result=pd.concat([result,df])
         result.to_excel(writer,sheet_name="Sheet1",index=False)
+
+## save to excel file
+def saveToCSV(features_dict,file):
+    result= pd.DataFrame()
+
+    for label, features_list in features_dict.items():
+        df = pd.DataFrame(features_list)
+        df['Class'] = label
+        result=pd.concat([result,df])
+
+    result.to_csv(file, mode='a', header=False)
 
 ## get accuracy by KNN
 def getAccuracyKNN(file):
