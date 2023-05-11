@@ -59,6 +59,58 @@ def applyPCA(features):
     return featuresPCA
 
 
+def sift(img):
+    # Initialize the SIFT detector
+    sift = cv.SIFT_create()
+
+    # Detect the SIFT keypoints and compute the descriptors for the image
+    _, descriptors = sift.detectAndCompute(img, None)
+
+    return descriptors
+
+
+def getFeaturesSIFT(x_train):
+    features = []
+    for img in x_train:
+        img = preprocess(img)
+        fd = sift(img)
+        # fd = hog_features(resize(img, (128*4, 64*4)))
+        # fd = hog(resize(img, (128*4, 64*4)), orientations=9,
+        #  pixels_per_cell=(14, 14), cells_per_block=(1, 1), visualize=False)
+        # fd = lbp(resize(img, (128*4, 64*4)))
+        features.append(fd)
+
+    # fd_PCA = applyPCA(features)
+    return features
+
+
+def saveFeaturesSIFT():
+    x = []
+    y = []
+    f = True
+    for i in range(6):
+        print(i)
+        print("------------------------------")
+        INPUT_PATH = "../Dataset_0-5/"+str(i)
+        imgs = readImages(INPUT_PATH)
+        features = getFeatures(imgs)
+
+        featuresDict[str(i)] = features
+        start = 0
+        if f:
+            x = features[0]
+            y = [str(i)] * len(features[0])
+            start = 1
+            f = False
+        for j in range(start, len(features)):
+            x = np.concatenate((np.array(x, dtype=object), np.array(features[j], dtype=object)),
+                               axis=0, dtype=object)
+            y = np.concatenate(
+                (np.array(y), np.array([str(i)] * len(features[j]))), axis=0)
+
+    return x, y
+
+
 def getFeatures(x_train):
     features = []
     for img in x_train:
@@ -81,7 +133,7 @@ def saveFeatures():
         print(i)
         print("------------------------------")
         INPUT_PATH = "../Dataset_0-5/"+str(i)
-        imgs = readImages(INPUT_PATH,i)
+        imgs = readImages(INPUT_PATH, i)
         features = getFeatures(imgs)
 
         featuresDict[str(i)] = features
