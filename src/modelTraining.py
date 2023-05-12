@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-# knn
+
 def KNN(x_train, x_test, y_train, y_test, k):
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(x_train, y_train)
@@ -22,21 +22,23 @@ def KNN(x_train, x_test, y_train, y_test, k):
 
 def SVM(x_train, x_test, y_train, y_test):
     # Train an SVM model using the training data
-    svm_model = SVC(kernel='linear', C=1.0)
+    svm_model = SVC(kernel="linear", C=1.0)
     svm_model.fit(x_train, y_train)
 
     # Predict labels for the test data
     accuracy = svm_model.score(x_test, y_test)
+    y_pred = svm_model.predict(x_test)
 
-    return accuracy
+    # return accuracy
+    return y_pred, y_test
+
 
 # Gradient Boosting Classifier
 
 
 def GBC(x_train, x_test, y_train, y_test):
     # Train an SVM model using the training data
-    model = GradientBoostingClassifier(
-        max_depth=5, n_estimators=100, learning_rate=0.1)
+    model = GradientBoostingClassifier(max_depth=5, n_estimators=100, learning_rate=0.1)
     model.fit(x_train, y_train)
 
     # Predict on testing data
@@ -81,8 +83,7 @@ def bayes(x_train, x_test, y_train, y_test):
 
 def randomForest(x_train, x_test, y_train, y_test):
     # Create Random Forest model
-    model = RandomForestClassifier(
-        n_estimators=100, max_depth=5, random_state=42)
+    model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
 
     # Train model on training data
     model.fit(x_train, y_train)

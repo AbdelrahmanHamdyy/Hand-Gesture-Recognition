@@ -5,7 +5,7 @@ from sklearn.metrics import confusion_matrix
 from modelTraining import *
 
 
-def checkPreformance(y_true, y_pred):
+def PerformanceMetrics(y_true, y_pred):
     cm = confusion_matrix(y_true, y_pred)
     classes = np.unique(y_true)
     sns.heatmap(
@@ -24,9 +24,10 @@ def checkPreformance(y_true, y_pred):
 
 def runPerformance(x_train, x_test, y_train, y_test):
     y_pred, y_true = SVM(x_train, x_test, y_train, y_test)
-    metrics = checkPreformance(y_true, y_pred)
+    metrics = PerformanceMetrics(y_true, y_pred)
     metrics.plot_confusion_matrix()
 
 
-if __name__ == '__main__':
-    runPerformance()
+# ? for testing performance
+# if __name__ == "__main__":
+#     runPerformance()
