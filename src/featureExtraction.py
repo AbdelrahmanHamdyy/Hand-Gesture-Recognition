@@ -9,6 +9,8 @@ from preprocessing import *
 DATA = "../Dataset_0-5/"
 SAMPLE = "../Sample/"
 
+featuresDict = {}
+
 
 def getFeatures(imgs):
     features = []
@@ -30,13 +32,14 @@ def saveFeatures():
     for i in range(6):
         print(i)
         print("------------------------------")
-        INPUT_PATH = DATA + str(i)
+        INPUT_PATH = SAMPLE + str(i)
         imgs = readImages(INPUT_PATH, i)
         features = getFeatures(imgs)
+        featuresDict[str(i)] = features
         x = x + features
         y = y + ([str(i)] * len(features))
 
-    return x, y
+    return x, y, featuresDict
 
 
 def applyPCA(features):

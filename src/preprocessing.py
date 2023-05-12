@@ -59,7 +59,7 @@ def adaptiveThresholding(img):
 
 def gammaCorrection(img):
     # Apply Gamma Correction
-    gamma = 0.5
+    gamma = 1.5
     gamma_corrected = np.power(img/255.0, gamma)
     gamma_corrected = np.uint8(gamma_corrected*255)
 
@@ -203,6 +203,9 @@ def segmentYCbCr(img):
 
 
 def preprocess(img):
+    # Apply gamma correction to adjust lighting
+    img = gammaCorrection(img)
+
     # Segmentation
     segmentedImg = segmentYCbCr(img)
 
@@ -210,7 +213,7 @@ def preprocess(img):
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
     # Structuring Element for Morphological Operations
-    kernel = np.ones((24, 24), np.uint8)
+    kernel = cv.getStructuringElement(cv.MORPH_RECT, (24, 24))
 
     # Dilation
     dilatedImg = cv.dilate(segmentedImg, kernel, iterations=18)

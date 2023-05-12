@@ -3,14 +3,7 @@ from featureExtraction import *
 from modelTraining import *
 
 
-def run():
-    # Extract Features
-    x, y = saveFeatures()
-
-    # Split Training and Test Data
-    x_train, x_test, y_train, y_test = train_test_split(
-        x, y, test_size=0.2, random_state=42)
-
+def calcAccuracy(x_train, x_test, y_train, y_test):
     # Train and Test Model using different classifiers
     print("Testing...")
     accSVM = SVM(x_train, x_test, y_train, y_test)
@@ -39,6 +32,21 @@ def run():
     accuracy = max(accSVM, accRF, accDT, accBayes,
                    accLR, accKNN3, accKNN5, accGBC)
     print('Best Accuracy: {:.3f}'.format(accuracy))
+
+
+def run():
+    # Extract Features
+    x, y, features = saveFeatures()
+
+    # Save features to CSV file
+    saveToCSV(features, "../output.csv")
+
+    # Split Training and Test Data
+    x_train, x_test, y_train, y_test = train_test_split(
+        x, y, test_size=0.2, random_state=42)
+
+    # Train and Test Model using different classifiers
+    calcAccuracy(x_train, x_test, y_train, y_test)
 
 
 if __name__ == '__main__':

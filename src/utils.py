@@ -38,16 +38,7 @@ def showImages(imgs, labels):
     cv.destroyAllWindows()
 
 
-def saveToExcel(features_dict, file):
-    result = pd.DataFrame()
-    with pd.ExcelWriter(file, mode="a", engine="openpyxl", if_sheet_exists='replace') as writer:
-        for label, features_list in features_dict.items():
-            df = pd.DataFrame(features_list)
-            df['Class'] = label
-            result = pd.concat([result, df])
-        result.to_excel(writer, sheet_name="Sheet1", index=False)
-
-
+# save to excel file
 def saveToCSV(features_dict, file):
     result = pd.DataFrame()
 
@@ -56,7 +47,27 @@ def saveToCSV(features_dict, file):
         df['Class'] = label
         result = pd.concat([result, df])
 
-    result.to_csv(file, mode='a', header=False)
+    result.to_csv(file, mode='w+',  index=False)
+# get accuracy by SVM
+
+
+def getAccuracySVM(file):
+    # Load data from Excel file into a pandas DataFrame
+    df = pd.read_csv(file)
+
+    # Split the data into training and testing sets
+    X = df.drop('Class', axis=1)
+    y = df['Class']
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+
+    # Train an SVM model using the training data
+    svm_model = SVC(kernel='linear', C=1.0)
+    svm_model.fit(X_train, y_train)
+
+    # Predict the labels for the test data
+    accuracy = svm_model.score(X_test, y_test)
+    print('Accuracy: {:.2f}'.format(accuracy))
 
 
 def getAccuracyKNN(file):
@@ -76,25 +87,4 @@ def getAccuracyKNN(file):
     # Make predictions on the test data and evaluate the model
     y_pred = knn.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
-    print('Accuracy: {:.2f}'.format(accuracy))
-
-
-def getAccuracySVM(file):
-    # Load data from Excel file into a pandas DataFrame
-    df = pd.read_excel(file, sheet_name="Sheet1")
-
-    # Split the data into training and testing sets
-    X = df.drop('Class', axis=1)
-    y = df['Class']
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42)
-
-    # Train an SVM model using the training data
-    svm_model = SVC(kernel='linear', C=1.0)
-    svm_model.fit(X_train, y_train)
-
-    # Predict the labels for the test data
-    # y_pred = svm_model.predict(X_test)
-    # accuracy = accuracy_score(y_test, y_pred)
-    accuracy = svm_model.score(X_test, y_test)
     print('Accuracy: {:.2f}'.format(accuracy))

@@ -30,6 +30,8 @@ def SVM(x_train, x_test, y_train, y_test):
 
     return accuracy
 
+# Gradient Boosting Classifier
+
 
 def GBC(x_train, x_test, y_train, y_test):
     # Train an SVM model using the training data
