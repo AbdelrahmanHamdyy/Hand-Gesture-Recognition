@@ -8,29 +8,28 @@ def calcAccuracy(x_train, x_test, y_train, y_test):
     print("Testing...")
     accSVM = SVM(x_train, x_test, y_train, y_test)
     accKNN3 = KNN(x_train, x_test, y_train, y_test, 3)
-    accKNN5 = KNN(x_train, x_test, y_train, y_test, 5)
+    # accKNN5 = KNN(x_train, x_test, y_train, y_test, 5)
     accGBC = GBC(x_train, x_test, y_train, y_test)
     # accSVR = trainSVR(x_train, x_test, y_train, y_test)
-    accRF = randomForest(x_train, x_test, y_train, y_test)
-    accBayes = bayes(x_train, x_test, y_train, y_test)
+    # accRF = randomForest(x_train, x_test, y_train, y_test)
+    # accBayes = bayes(x_train, x_test, y_train, y_test)
     accLR = logisticRegression(x_train, x_test, y_train, y_test)
-    accDT = decisionTree(x_train, x_test, y_train, y_test)
+    # accDT = decisionTree(x_train, x_test, y_train, y_test)
 
     # Print accuracies
     print('SVM Accuracy: {:.3f}'.format(accSVM))
-    print('KNN3 Accuracy: {:.3f}'.format(accKNN3))
-    print('KNN5 Accuracy: {:.3f}'.format(accKNN5))
-    print('GBC Accuracy: {:.3f}'.format(accGBC))
+    # print('KNN3 Accuracy: {:.3f}'.format(accKNN3))
+    # print('KNN5 Accuracy: {:.3f}'.format(accKNN5))
+    # print('GBC Accuracy: {:.3f}'.format(accGBC))
     # print('SVR Accuracy: {:.3f}'.format(accSVR))
-    print('RF Accuracy: {:.3f}'.format(accRF))
-    print('Bayes Accuracy: {:.3f}'.format(accBayes))
+    # print('RF Accuracy: {:.3f}'.format(accRF))
+    # print('Bayes Accuracy: {:.3f}'.format(accBayes))
     print('LR Accuracy: {:.3f}'.format(accLR))
-    print('DT Accuracy: {:.3f}'.format(accDT))
+    # print('DT Accuracy: {:.3f}'.format(accDT))
 
     # Print best accuracy
     print("------------------------------")
-    accuracy = max(accSVM, accRF, accDT, accBayes,
-                   accLR, accKNN3, accKNN5, accGBC)
+    accuracy = max(accSVM, accLR)
     print('Best Accuracy: {:.3f}'.format(accuracy))
 
 

@@ -32,7 +32,7 @@ def saveFeatures():
     for i in range(6):
         print(i)
         print("------------------------------")
-        INPUT_PATH = SAMPLE + str(i)
+        INPUT_PATH = DATA + str(i)
         imgs = readImages(INPUT_PATH, i)
         features = getFeatures(imgs)
         featuresDict[str(i)] = features

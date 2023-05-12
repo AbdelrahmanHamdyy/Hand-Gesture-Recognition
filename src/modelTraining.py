@@ -22,7 +22,8 @@ def KNN(x_train, x_test, y_train, y_test, k):
 
 def SVM(x_train, x_test, y_train, y_test):
     # Train an SVM model using the training data
-    svm_model = SVC(kernel='linear', C=1.0)
+    svm_model = SVC(C=10, class_weight=None, coef0=-1,
+                    degree=2, gamma='scale', kernel='rbf')
     svm_model.fit(x_train, y_train)
 
     # Predict labels for the test data

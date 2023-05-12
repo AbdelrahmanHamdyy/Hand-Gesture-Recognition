@@ -59,11 +59,26 @@ def adaptiveThresholding(img):
 
 def gammaCorrection(img):
     # Apply Gamma Correction
-    gamma = 1.5
+    gamma = 1.2
     gamma_corrected = np.power(img/255.0, gamma)
     gamma_corrected = np.uint8(gamma_corrected*255)
 
     return gamma_corrected
+
+
+def gammaLUT(img):
+    # Define gamma value
+    gamma = 0.5
+
+    # Create lookup table
+    lookup_table = np.zeros((256, 1), dtype=np.uint8)
+    for i in range(256):
+        lookup_table[i][0] = 255 * pow(float(i)/255, 1.0/gamma)
+
+    # Apply gamma correction using the lookup table
+    img_gamma = cv.LUT(img, lookup_table)
+
+    return img_gamma
 
 
 def gaussianMixture(img):
@@ -224,8 +239,11 @@ def preprocess(img):
     # Region Filling using Contours
     imgWithContours = contours(borderImg)
 
+    # Erosion
+    erodedImg = cv.erode(imgWithContours, kernel, iterations=12)
+
     # Apply Mask
-    maskedImg = restoreImage(imgWithContours, img)
+    maskedImg = restoreImage(erodedImg, img)
 
     # Crop image to fit the hand exactly
     croppedImg = crop(maskedImg)
