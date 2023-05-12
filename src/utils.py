@@ -6,16 +6,16 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
-from preprocess import *
+from preprocessing import *
 
 
-def readImages(dataPath,num):
+def readImages(dataPath, num=0):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
-    counter=0
+    counter = 0
     x = []
     for fileName in files:
         img = cv.imread(dataPath + "/" + fileName)
-        if(img is None):
+        if (img is None):
             continue
         # img = preprocess(img)
         # cv.imwrite("../Dataset-output" + "/"+ str(num)+"/"+ str(fileName),img)
@@ -27,6 +27,7 @@ def readImages(dataPath,num):
         #     break
     return x
 
+
 def showImages(imgs, labels):
     if len(imgs) != len(labels):
         print("Length of images isn't the same as labels")
@@ -36,28 +37,28 @@ def showImages(imgs, labels):
         cv.waitKey(0)
     cv.destroyAllWindows()
 
-## save to excel file
-def saveToExcel(features_dict,file):
-    result= pd.DataFrame()
-    with pd.ExcelWriter(file,mode="a",engine="openpyxl",if_sheet_exists='replace') as writer:
+
+def saveToExcel(features_dict, file):
+    result = pd.DataFrame()
+    with pd.ExcelWriter(file, mode="a", engine="openpyxl", if_sheet_exists='replace') as writer:
         for label, features_list in features_dict.items():
             df = pd.DataFrame(features_list)
             df['Class'] = label
-            result=pd.concat([result,df])
-        result.to_excel(writer,sheet_name="Sheet1",index=False)
+            result = pd.concat([result, df])
+        result.to_excel(writer, sheet_name="Sheet1", index=False)
 
-## save to excel file
-def saveToCSV(features_dict,file):
-    result= pd.DataFrame()
+
+def saveToCSV(features_dict, file):
+    result = pd.DataFrame()
 
     for label, features_list in features_dict.items():
         df = pd.DataFrame(features_list)
         df['Class'] = label
-        result=pd.concat([result,df])
+        result = pd.concat([result, df])
 
     result.to_csv(file, mode='a', header=False)
 
-## get accuracy by KNN
+
 def getAccuracyKNN(file):
     # Load data from Excel file into a pandas DataFrame
     df = pd.read_excel(file, sheet_name="Sheet1")
@@ -65,7 +66,8 @@ def getAccuracyKNN(file):
     # Split the data into training and testing sets
     X = df.drop('Class', axis=1)
     y = df['Class']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
 
     # Train a KNN classifier on the training data
     knn = KNeighborsClassifier(n_neighbors=5)
@@ -76,7 +78,7 @@ def getAccuracyKNN(file):
     accuracy = accuracy_score(y_test, y_pred)
     print('Accuracy: {:.2f}'.format(accuracy))
 
-## get accuracy by SVM
+
 def getAccuracySVM(file):
     # Load data from Excel file into a pandas DataFrame
     df = pd.read_excel(file, sheet_name="Sheet1")
@@ -84,7 +86,8 @@ def getAccuracySVM(file):
     # Split the data into training and testing sets
     X = df.drop('Class', axis=1)
     y = df['Class']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
 
     # Train an SVM model using the training data
     svm_model = SVC(kernel='linear', C=1.0)

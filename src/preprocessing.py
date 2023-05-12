@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 import matplotlib as mpl
-# from utils import showImages
 from sklearn.mixture import GaussianMixture
 from utils import *
 
@@ -56,6 +55,15 @@ def adaptiveThresholding(img):
     adaptive_thresh = cv.adaptiveThreshold(
         img, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 2)
     return adaptive_thresh
+
+
+def gammaCorrection(img):
+    # Apply Gamma Correction
+    gamma = 0.5
+    gamma_corrected = np.power(img/255.0, gamma)
+    gamma_corrected = np.uint8(gamma_corrected*255)
+
+    return gamma_corrected
 
 
 def gaussianMixture(img):
@@ -125,10 +133,11 @@ def restoreImage(mask, img):
 def setSideBorders(img, val):
     img[:, 0] = val
     img[:, img.shape[1] - 1] = val
+    # img[img.shape[0] - 1, :] = val
     return img
 
 
-def crop(img):
+def boundingRect(img):
     # apply binary thresholding to the grayscale image
     _, thresh = cv.threshold(img, 0, 255, cv.THRESH_BINARY)
 
@@ -142,13 +151,20 @@ def crop(img):
     # create a bounding rectangle around the contour
     x, y, w, h = cv.boundingRect(max_contour)
 
+    return x, y, w, h
+
+
+def crop(img):
+    # Get max contour bounding rectangle vertices
+    x, y, w, h = boundingRect(img)
+
     # crop the image to the bounding rectangle
     crop_img = img[y:y+h, x:x+w]
 
     return crop_img
 
 
-def segment(img):
+def segmentHSV(img):
     # Convert image to HSV color space
     hsv_img = cv.cvtColor(img, cv.COLOR_BGR2HSV)
 
@@ -168,9 +184,27 @@ def segment(img):
     return result
 
 
+def segmentYCbCr(img):
+    # Convert image to YCbCr color space
+    ycbcr_image = cv.cvtColor(img, cv.COLOR_BGR2YCrCb)
+
+    lower_skin = np.array([0, 135, 75], dtype=np.uint8)
+    upper_skin = np.array([255, 180, 125], dtype=np.uint8)
+
+    skin_mask = cv.inRange(ycbcr_image, lower_skin, upper_skin)
+
+    output_image = np.zeros(img.shape, np.uint8)
+    output_image[skin_mask == 255] = img[skin_mask == 255]
+
+    # Convert img to grayscale
+    output_image = cv.cvtColor(output_image, cv.COLOR_BGR2GRAY)
+
+    return output_image
+
+
 def preprocess(img):
     # Segmentation
-    segmentedImg = segment(img)
+    segmentedImg = segmentYCbCr(img)
 
     # Convert original image to grayscale
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -200,7 +234,7 @@ def runSegmentation():
     imgs = readImages("../input/")
     for i in range(len(imgs)):
         segmentationResult = preprocess(imgs[i])
-        cv.imwrite("../output2/result" + str(i) + ".jpeg", segmentationResult)
+        cv.imwrite("../output/result" + str(i) + ".jpeg", segmentationResult)
 
 
 def test():

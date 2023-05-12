@@ -135,6 +135,7 @@ dmypy.json
 dataset/
 dataset-output/
 Dataset_0-5/
+Sample/
 
 # Input
 testInput/
