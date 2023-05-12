@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-
+# knn
 def KNN(x_train, x_test, y_train, y_test, k):
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(x_train, y_train)
