@@ -7,6 +7,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.svm import SVC
 from preprocessing import *
+import joblib
 
 
 def readImages(dataPath, num=0):
@@ -64,7 +65,7 @@ def getAccuracySVM(file):
     # Train an SVM model using the training data
     svm_model = SVC(kernel='linear', C=1.0)
     svm_model.fit(X_train, y_train)
-
+    joblib.dump(svm_model, '../models/svm_model.pkl')
     # Predict the labels for the test data
     accuracy = svm_model.score(X_test, y_test)
     print('Accuracy: {:.2f}'.format(accuracy))
@@ -83,7 +84,7 @@ def getAccuracyKNN(file):
     # Train a KNN classifier on the training data
     knn = KNeighborsClassifier(n_neighbors=5)
     knn.fit(X_train, y_train)
-
+    joblib.dump(knn, '../models/knn_model.pkl')
     # Make predictions on the test data and evaluate the model
     y_pred = knn.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)

@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+input
+input2/*
+
 # C extensions
 *.so
 
@@ -130,6 +133,9 @@ dmypy.json
 
 # excel sheet
 *.xlsx
+
+data
+output.csv
 
 # Dataset
 dataset/
