@@ -54,9 +54,9 @@ def crossValidation(X, y):
 
 
 def runPerformance(x_train, x_test, y_train, y_test):
-    y_pred, y_true = SVM(x_train, x_test, y_train, y_test)
-    metrics = performanceMetrics(y_true, y_pred)
-    metrics.plot_confusion_matrix()
+    _, y_pred, y_true = SVM(x_train, x_test, y_train, y_test)
+    performanceMetrics(y_true, y_pred)
+    
 
 
 # ? for testing performance
