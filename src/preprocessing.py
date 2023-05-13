@@ -81,8 +81,8 @@ def gammaLUT(img):
     avg = getAvg(img)
 
     # gamma > 1 ---> The image becomes darker
-    gamma = 0.8
-    if (avg > 140):
+    gamma = 0.7
+    if (avg > 150):
         gamma = 1.2
 
     # Create lookup table
