@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+input
+input2/*
+
 # C extensions
 *.so
 
@@ -127,4 +130,27 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# excel sheet
+*.xlsx
+
+data
+output.csv
+
+# Dataset
+dataset/
+dataset-output/
 Dataset_0-5/
+Sample/
+Deleted/
+models/
+
+# Input
+testInput/
+
+# Output
+output/
+output2/
+
+# Vscode
+.vscode/
