@@ -57,9 +57,20 @@ def adaptiveThresholding(img):
     return adaptive_thresh
 
 
+def getAvg(img):
+    # Convert image to grayscale
+    img_gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    # Calculate average pixel intensity
+    avg_intensity = cv.mean(img_gray)[0]
+
+    return avg_intensity
+
+
 def gammaCorrection(img):
-    # Apply Gamma Correction
     gamma = 1.2
+
+    # Apply Gamma Correction
     gamma_corrected = np.power(img/255.0, gamma)
     gamma_corrected = np.uint8(gamma_corrected*255)
 
@@ -67,13 +78,17 @@ def gammaCorrection(img):
 
 
 def gammaLUT(img):
-    # Define gamma value
-    gamma = 0.5
+    avg = getAvg(img)
+
+    # gamma > 1 ---> The image becomes darker
+    gamma = 0.8
+    if (avg > 140):
+        gamma = 1.2
 
     # Create lookup table
     lookup_table = np.zeros((256, 1), dtype=np.uint8)
     for i in range(256):
-        lookup_table[i][0] = 255 * pow(float(i)/255, 1.0/gamma)
+        lookup_table[i][0] = 255 * pow(i/255.0, gamma)
 
     # Apply gamma correction using the lookup table
     img_gamma = cv.LUT(img, lookup_table)
@@ -219,7 +234,7 @@ def segmentYCbCr(img):
 
 def preprocess(img):
     # Apply gamma correction to adjust lighting
-    img = gammaCorrection(img)
+    img = gammaLUT(img)
 
     # Segmentation
     segmentedImg = segmentYCbCr(img)
@@ -252,7 +267,7 @@ def preprocess(img):
 
 
 def runSegmentation():
-    imgs = readImages("../input/")
+    imgs = readImages("../testInput/")
     for i in range(len(imgs)):
         segmentationResult = preprocess(imgs[i])
         cv.imwrite("../output/result" + str(i) + ".jpeg", segmentationResult)

@@ -19,7 +19,7 @@ def readImages(dataPath, num=0):
         if (img is None):
             continue
         # img = preprocess(img)
-        # cv.imwrite("../Dataset-output" + "/"+ str(num)+"/"+ str(fileName),img)
+        # cv.imwrite("../Dataset-output" + "/" + str(num)+"/" + str(fileName), img)
         # print("===============",fileName+"=======================")
         # print(img)
         x.append(img)

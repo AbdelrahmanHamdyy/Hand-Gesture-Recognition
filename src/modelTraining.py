@@ -32,7 +32,7 @@ def SVM(x_train, x_test, y_train, y_test):
     y_pred = svm_model.predict(x_test)
 
     # return accuracy
-    return y_pred, y_test
+    return accuracy
 
 
 # Gradient Boosting Classifier
