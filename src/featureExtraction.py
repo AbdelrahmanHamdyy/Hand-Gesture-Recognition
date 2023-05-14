@@ -39,7 +39,7 @@ def saveFeatures():
         x = x + features
         y = y + ([str(i)] * len(features))
 
-    return x, y, featuresDict
+    return x, y
 
 
 def applyPCA(features):

@@ -4,6 +4,7 @@ from timeit import default_timer as timer
 import joblib
 
 DATA_SOURCE = '../data'
+predictions = []
 
 
 def generateReport():
@@ -28,10 +29,12 @@ def generateReport():
         timeFile.write(str(roundedTime))
         timeFile.write("\n")
         resultFile.write(str(prediction[0]))
+        predictions.append(str(prediction[0]))
         resultFile.write("\n")
     timeFile.close()
     resultFile.close()
     print("Done! 🎉")
+    return predictions
 
 
-generateReport()
+# generateReport()
