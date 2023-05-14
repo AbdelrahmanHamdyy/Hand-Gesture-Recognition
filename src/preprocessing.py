@@ -255,7 +255,7 @@ def preprocess(img):
     imgWithContours = contours(borderImg)
 
     # Erosion
-    erodedImg = cv.erode(imgWithContours, kernel, iterations=12)
+    erodedImg = cv.erode(imgWithContours, kernel, iterations=1)
 
     # Apply Mask
     maskedImg = restoreImage(erodedImg, img)
