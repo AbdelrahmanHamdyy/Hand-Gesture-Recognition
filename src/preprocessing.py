@@ -246,7 +246,7 @@ def preprocess(img):
     kernel = cv.getStructuringElement(cv.MORPH_RECT, (24, 24))
 
     # Dilation
-    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=18)
+    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=10)
 
     # Draw left & right borders
     borderImg = setSideBorders(dilatedImg, val=128)
@@ -255,7 +255,7 @@ def preprocess(img):
     imgWithContours = contours(borderImg)
 
     # Erosion
-    erodedImg = cv.erode(imgWithContours, kernel, iterations=1)
+    erodedImg = cv.erode(imgWithContours, kernel, iterations=5)
 
     # Apply Mask
     maskedImg = restoreImage(erodedImg, img)

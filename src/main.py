@@ -9,7 +9,6 @@ from predict import generateReport
 
 def calcAccuracy(x_train, x_test, y_train, y_test):
     # Train and Test Model using different classifiers
-    print("Testing...")
     accSVM, _, _ = SVM(x_train, x_test, y_train, y_test)
     # accKNN3 = KNN(x_train, x_test, y_train, y_test, 3)
     # accKNN5 = KNN(x_train, x_test, y_train, y_test, 5)
@@ -37,22 +36,24 @@ def calcAccuracy(x_train, x_test, y_train, y_test):
     # print("Best Accuracy: {:.3f}".format(accSVM))
 
 
-def sample(x, y):
-    train(x, y)
+def sample(x=None, y=None):
+    # train(x, y)
     predictions = generateReport()
-    true = []
-    for i in range(6):
-        if i == 2:
-            true = true + ([str(i)] * 15)
-        else:
-            true = true + ([str(i)] * 17)
+    s0 = str(0)
+    s1 = str(1)
+    s2 = str(2)
+    s3 = str(3)
+    s4 = str(4)
+    s5 = str(5)
+    true = [s0, s0, s0, s0, s1, s1, s1, s2, s2, s2, s2,
+            s3, s3, s3, s3, s3, s3, s4, s4, s4, s4, s5, s5, s5]
     accuracy = accuracy_score(true, predictions)
     print("Accuracy: {:.3f}%".format(accuracy * 100))
 
 
 def run():
     # Extract Features
-    x, y = saveFeatures()
+    # x, y = saveFeatures()
 
     # Save features to CSV file
     # saveToCSV(features, "../output.csv")
@@ -60,7 +61,7 @@ def run():
     # Split Training and Test Data
     # x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
     # runPerformance(x_train, x_test, y_train, y_test)
-    sample(x, y)
+    sample()
 
     # Train and Test Model using different classifiers
     # calcAccuracy(x_train, x_test, y_train, y_test)
