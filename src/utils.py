@@ -14,6 +14,7 @@ def readImages(dataPath, num=0):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
     counter = 0
     x = []
+    files.sort()
     for fileName in files:
         img = cv.imread(dataPath + "/" + fileName)
         if (img is None):
