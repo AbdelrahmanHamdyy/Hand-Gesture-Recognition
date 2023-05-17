@@ -19,8 +19,13 @@ def getFeatures(imgs):
         # img = preprocess(img)
 
         # HOG
-        fd = hog(resize(img, (64, 128)), orientations=9,
-                 pixels_per_cell=(16, 16), cells_per_block=(2, 2), visualize=False)
+        fd = hog(
+            resize(img, (64, 128)),
+            orientations=9,
+            pixels_per_cell=(16, 16),
+            cells_per_block=(2, 2),
+            visualize=False,
+        )
         features.append(fd)
 
     return features
@@ -66,3 +71,14 @@ def lbp(img, radius=3, n_points=8):
     hist = hist.astype("float")
     hist /= hist.sum() + 1e-7
     return hist
+
+
+def sift(img):
+    gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    # keypoints
+    sift = cv.xfeatures2d.SIFT_create()
+    keypoints_1, descriptors_1 = sift.detectAndCompute(img, None)
+
+    res = cv.drawKeypoints(gray_img, keypoints_1, img)
+    return res
