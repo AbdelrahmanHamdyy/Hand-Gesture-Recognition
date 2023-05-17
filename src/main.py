@@ -53,18 +53,18 @@ def sample(x=None, y=None):
 
 def run():
     # Extract Features
-    # x, y = saveFeatures()
+    x, y = saveFeatures()
 
     # Save features to CSV file
-    # saveToCSV(features, "../output.csv")
+    saveToCSV(features, "../output.csv")
 
     # Split Training and Test Data
-    # x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
     # runPerformance(x_train, x_test, y_train, y_test)
-    sample()
+    # sample()
 
     # Train and Test Model using different classifiers
-    # calcAccuracy(x_train, x_test, y_train, y_test)
+    calcAccuracy(x_train, x_test, y_train, y_test)
 
 
 if __name__ == "__main__":

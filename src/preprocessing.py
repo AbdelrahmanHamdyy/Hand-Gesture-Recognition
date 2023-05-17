@@ -279,6 +279,22 @@ def test():
     cv.imwrite("../output/result.jpeg", result)
 
 
+def augmentImages(imgs):
+    new_imgs = []
+    print("Augmenting")
+    for j in range(len(imgs)):
+        current_image = imgs[j]
+        height, width = current_image.shape[:2]
+        rotation_matrix = cv.getRotationMatrix2D(
+            (width/2, height/2), 45, 0.5)
+        rotated_image = cv.warpAffine(
+            current_image, rotation_matrix, (width, height))
+        fliped_image = cv.flip(current_image, 3)
+        new_imgs.append(current_image)
+        new_imgs.append(fliped_image)
+        new_imgs.append(rotated_image)
+    return new_imgs
 if __name__ == '__main__':
-    runSegmentation()
+    # runSegmentation()
+    augmentImages("../data")
     # test()
