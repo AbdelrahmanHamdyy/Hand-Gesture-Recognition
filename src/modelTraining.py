@@ -27,7 +27,7 @@ def SVM(x_train, x_test, y_train, y_test):
         C=0.1, class_weight=None, coef0=1, degree=4, gamma=0.1, kernel="poly"
     )
     svm_model.fit(x_train, y_train)
-    joblib.dump(svm_model, "../models/svm_model.pkl")
+    joblib.dump(svm_model, "../models/svm_model3.pkl")
     accuracy = svm_model.score(x_test, y_test)
     # ? Predict labels for the test data
     y_pred = svm_model.predict(x_test)
@@ -140,7 +140,7 @@ def train(x_train, y_train):
         C=0.1, class_weight=None, coef0=1, degree=4, gamma=0.1, kernel="poly", probability=True
     )
     svm_model.fit(x_train, y_train)
-    joblib.dump(svm_model, "../models/svm_model.pkl")
+    joblib.dump(svm_model, "../models/final.pkl")
     return svm_model
 
 

@@ -54,20 +54,6 @@ def sample(x=None, y=None):
     print("Accuracy: {:.3f}%".format(accuracy * 100))
 
 
-def sabry():
-    # x, y = saveFeatures()
-    # model = train(x, y)
-    model = joblib.load("../models/svm_model.pkl")
-
-    true = []
-    with open('../results.txt', 'r') as file:
-        for line in file:
-            true.append(line.strip())
-    imgs = readImages("../data4")
-    x_test = getFeatures(imgs)
-    test(x_test, true, model)
-
-
 def run():
     # Extract Features
     x, y, features = saveFeatures()
@@ -76,17 +62,14 @@ def run():
     saveToCSV(features, "../output.csv")
 
     # Split Training and Test Data
-    # for i in range(15):
-    #     x_train, x_test, y_train, y_test = train_test_split(
-    #         x, y, test_size=0.2)
-    #     calcAccuracy(x_train, x_test, y_train, y_test)
-    # runPerformance(x_train, x_test, y_train, y_test)
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+    # Performance
+    runPerformance(x_train, x_test, y_train, y_test)
+
+    # Training
     train(x, y)
-    # sample(x, y)
-    # sabry()
-    # Train and Test Model using different classifiers
 
 
 if __name__ == "__main__":
-    # run()
-    sample()
+    generateReport()

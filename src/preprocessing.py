@@ -294,24 +294,24 @@ def newPreprocess(img):
     # -------------------------------------
 
     # Structuring Element for Morphological Operations
-    dilationkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15, 15))
+    dilationkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (17, 17))
     erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5))
 
     # Erosion
     erodedImg = cv.erode(segmentedImg, erosionkernel, iterations=3)
 
     # Dilation
-    dilatedImg = cv.dilate(erodedImg, dilationkernel, iterations=7)
+    dilatedImg = cv.dilate(erodedImg, dilationkernel, iterations=4)
 
     # Region Filling using Contours
     imgWithContours = contours(dilatedImg)
 
     # Erosion again
-    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15, 15))
-    erodedImg = cv.erode(imgWithContours, erosionkernel, iterations=7)
+    # erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15, 15))
+    # erodedImg = cv.erode(imgWithContours, erosionkernel, iterations=7)
 
     # Apply Mask
-    maskedImg = restoreImage(erodedImg, img)
+    maskedImg = restoreImage(imgWithContours, img)
 
     # Crop image to fit the hand exactly
     croppedImg = crop(maskedImg)
@@ -347,7 +347,9 @@ def augmentImages(imgs):
         new_imgs.append(fliped_image)
         new_imgs.append(rotated_image)
     return new_imgs
+
+
 if __name__ == '__main__':
-    # runSegmentation()
-    augmentImages("../data")
+    runSegmentation()
+    # augmentImages("../data")
     # test()

@@ -3,13 +3,13 @@ from featureExtraction import getFeatures
 from timeit import default_timer as timer
 import joblib
 
-DATA_SOURCE = '../nu3'
+DATA_SOURCE = '../data'
 predictions = []
 
 
 def generateReport():
     # Load the saved final model
-    model = joblib.load("../models/svm_model.pkl")
+    model = joblib.load("../models/final.pkl")
 
     # open the two files in write mode to override any old text or create them if they are not found
     resultFile = open("result.txt", "w")
@@ -19,7 +19,7 @@ def generateReport():
     # Now open the two files in append mode to append the needed results of each image
     resultFile = open("result.txt", "a")
     timeFile = open("time.txt", "a")
-    imgs = readImages(DATA_SOURCE, 0,True)
+    imgs = readImages(DATA_SOURCE, 0, True)
     for img in imgs:
         start = timer()
         features = getFeatures([img])
