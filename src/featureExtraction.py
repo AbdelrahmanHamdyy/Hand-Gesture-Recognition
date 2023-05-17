@@ -16,10 +16,10 @@ def getFeatures(imgs):
     features = []
     for img in imgs:
         # Preprocessing
-        img = preprocess(img)
+        # img = preprocess(img)
 
         # HOG
-        fd = hog(resize(img, (64*2, 128*2)), orientations=9,
+        fd = hog(resize(img, (64, 128)), orientations=9,
                  pixels_per_cell=(16, 16), cells_per_block=(2, 2), visualize=False)
         features.append(fd)
 
@@ -39,7 +39,7 @@ def saveFeatures():
         x = x + features
         y = y + ([str(i)] * len(features))
 
-    return x, y
+    return x, y, featuresDict
 
 
 def applyPCA(features):

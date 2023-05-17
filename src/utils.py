@@ -14,13 +14,15 @@ def readImages(dataPath, num=0):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
     counter = 0
     x = []
-    files = sorted(files, key=lambda x: int(x.split('.')[0]))
+    # files = sorted(files, key=lambda x: int(x.split('.')[0]))
     for fileName in files:
         img = cv.imread(dataPath + "/" + fileName)
         if (img is None):
             continue
-        # img = preprocess(img)
-        # cv.imwrite("../Dataset-output" + "/" + str(num)+"/" + str(fileName), img)
+        # print(fileName, getAvg(img))
+        # img = newPreprocess(img)
+        # cv.imwrite("../Dataset-output" + "/" +
+        #            str(num)+"/" + str(fileName), img)
         # print("===============",fileName+"=======================")
         # print(img)
         x.append(img)

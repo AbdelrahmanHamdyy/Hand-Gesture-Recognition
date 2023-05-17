@@ -83,7 +83,7 @@ def gammaLUT(img):
     # gamma > 1 ---> The image becomes darker
     gamma = 0.7
     if (avg > 150):
-        gamma = 1.2
+        gamma = 1.3
 
     # Create lookup table
     lookup_table = np.zeros((256, 1), dtype=np.uint8)
@@ -167,6 +167,15 @@ def setSideBorders(img, val):
     return img
 
 
+def drawAllBorders(img, val):
+    img[:, 0] = val
+    img[:, img.shape[1] - 1] = val
+    img[img.shape[0] - 1, :] = val
+    img[0, :] = val
+    # img[img.shape[0] - 1, :] = val
+    return img
+
+
 def boundingRect(img):
     # apply binary thresholding to the grayscale image
     _, thresh = cv.threshold(img, 0, 255, cv.THRESH_BINARY)
@@ -233,6 +242,9 @@ def segmentYCbCr(img):
 
 
 def preprocess(img):
+    # Resize
+    img = cv.resize(img, (500, 500))
+
     # Apply gamma correction to adjust lighting
     img = gammaLUT(img)
 
@@ -243,10 +255,10 @@ def preprocess(img):
     img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
     # Structuring Element for Morphological Operations
-    kernel = cv.getStructuringElement(cv.MORPH_RECT, (24, 24))
+    kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (9, 9))
 
     # Dilation
-    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=10)
+    dilatedImg = cv.dilate(segmentedImg, kernel, iterations=3)
 
     # Draw left & right borders
     borderImg = setSideBorders(dilatedImg, val=128)
@@ -255,7 +267,48 @@ def preprocess(img):
     imgWithContours = contours(borderImg)
 
     # Erosion
-    erodedImg = cv.erode(imgWithContours, kernel, iterations=5)
+    erodedImg = cv.erode(imgWithContours, kernel, iterations=3)
+
+    # Apply Mask
+    maskedImg = restoreImage(erodedImg, img)
+
+    # Crop image to fit the hand exactly
+    croppedImg = crop(maskedImg)
+
+    return segmentedImg
+
+
+def newPreprocess(img):
+    # Resize
+    img = cv.resize(img, (500, 500))
+
+    # Apply gamma correction to adjust lighting
+    img = gammaLUT(img)
+
+    # Segmentation
+    segmentedImg = segmentYCbCr(img)
+
+    # Convert original image to grayscale
+    img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    # -------------------------------------
+
+    # Structuring Element for Morphological Operations
+    dilationkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15, 15))
+    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (11, 11))
+
+    # Erosion
+    erodedImg = cv.erode(segmentedImg, erosionkernel, iterations=2)
+
+    # Dilation
+    dilatedImg = cv.dilate(erodedImg, dilationkernel, iterations=5)
+
+    # Region Filling using Contours
+    imgWithContours = contours(dilatedImg)
+
+    # Erosion again
+    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (11, 11))
+    erodedImg = cv.erode(imgWithContours, erosionkernel, iterations=5)
 
     # Apply Mask
     maskedImg = restoreImage(erodedImg, img)
@@ -269,7 +322,7 @@ def preprocess(img):
 def runSegmentation():
     imgs = readImages("../testInput/")
     for i in range(len(imgs)):
-        segmentationResult = preprocess(imgs[i])
+        segmentationResult = newPreprocess(imgs[i])
         cv.imwrite("../output/result" + str(i) + ".jpeg", segmentationResult)
 
 
