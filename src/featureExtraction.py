@@ -34,6 +34,7 @@ def saveFeatures():
         print("------------------------------")
         INPUT_PATH = DATA + str(i)
         imgs = readImages(INPUT_PATH, i)
+        imgs = augmentImages(imgs)
         features = getFeatures(imgs)
         featuresDict[str(i)] = features
         x = x + features

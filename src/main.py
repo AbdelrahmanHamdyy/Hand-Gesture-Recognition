@@ -73,7 +73,7 @@ def run():
     x, y, features = saveFeatures()
 
     # Save features to CSV file
-    # saveToCSV(features, "../output.csv")
+    saveToCSV(features, "../output.csv")
 
     # Split Training and Test Data
     # for i in range(15):

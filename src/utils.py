@@ -10,13 +10,14 @@ from preprocessing import *
 import joblib
 
 
-def readImages(dataPath, num=0):
+def readImages(dataPath, num=0, sort = False):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
     counter = 0
     x = []
-    files = sorted(files, key=lambda x: int(x.split('.')[0]))
+    if sort:
+        files = sorted(files, key=lambda x: int(x.split('.')[0]))
     for fileName in files:
-        img = cv.imread(dataPath + "/" + fileName)
+        img = cv.imread(join(dataPath, fileName))
         if (img is None):
             continue
         # print(fileName, getAvg(img))
@@ -44,12 +45,12 @@ def showImages(imgs, labels):
 
 # save to excel file
 def saveToCSV(features_dict, file):
-    result = pd.DataFrame()
+    result=pd.DataFrame()
 
     for label, features_list in features_dict.items():
-        df = pd.DataFrame(features_list)
-        df['Class'] = label
-        result = pd.concat([result, df])
+        df=pd.DataFrame(features_list)
+        df['Class']=label
+        result=pd.concat([result, df])
 
     result.to_csv(file, mode='w+',  index=False)
 # get accuracy by SVM
@@ -57,38 +58,38 @@ def saveToCSV(features_dict, file):
 
 def getAccuracySVM(file):
     # Load data from Excel file into a pandas DataFrame
-    df = pd.read_csv(file)
+    df=pd.read_csv(file)
 
     # Split the data into training and testing sets
-    X = df.drop('Class', axis=1)
-    y = df['Class']
-    X_train, X_test, y_train, y_test = train_test_split(
+    X=df.drop('Class', axis=1)
+    y=df['Class']
+    X_train, X_test, y_train, y_test=train_test_split(
         X, y, test_size=0.2, random_state=42)
 
     # Train an SVM model using the training data
-    svm_model = SVC(kernel='linear', C=1.0)
+    svm_model=SVC(kernel='linear', C=1.0)
     svm_model.fit(X_train, y_train)
     joblib.dump(svm_model, '../models/svm_model.pkl')
     # Predict the labels for the test data
-    accuracy = svm_model.score(X_test, y_test)
+    accuracy=svm_model.score(X_test, y_test)
     print('Accuracy: {:.2f}'.format(accuracy))
 
 
 def getAccuracyKNN(file):
     # Load data from Excel file into a pandas DataFrame
-    df = pd.read_excel(file, sheet_name="Sheet1")
+    df=pd.read_excel(file, sheet_name="Sheet1")
 
     # Split the data into training and testing sets
-    X = df.drop('Class', axis=1)
-    y = df['Class']
-    X_train, X_test, y_train, y_test = train_test_split(
+    X=df.drop('Class', axis=1)
+    y=df['Class']
+    X_train, X_test, y_train, y_test=train_test_split(
         X, y, test_size=0.2, random_state=42)
 
     # Train a KNN classifier on the training data
-    knn = KNeighborsClassifier(n_neighbors=5)
+    knn=KNeighborsClassifier(n_neighbors=5)
     knn.fit(X_train, y_train)
     joblib.dump(knn, '../models/knn_model.pkl')
     # Make predictions on the test data and evaluate the model
-    y_pred = knn.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
+    y_pred=knn.predict(X_test)
+    accuracy=accuracy_score(y_test, y_pred)
     print('Accuracy: {:.2f}'.format(accuracy))
