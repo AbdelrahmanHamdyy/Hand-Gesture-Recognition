@@ -16,7 +16,7 @@ def getFeatures(imgs):
     features = []
     for img in imgs:
         # Preprocessing
-        img = preprocess(img)
+        img = newPreprocess(img)
 
         # HOG
         fd = hog(resize(img, (64*2, 128*2)), orientations=9,
@@ -40,7 +40,7 @@ def saveFeatures():
         x = x + features
         y = y + ([str(i)] * len(features))
 
-    return x, y
+    return x, y, featuresDict
 
 
 def applyPCA(features):
@@ -67,3 +67,14 @@ def lbp(img, radius=3, n_points=8):
     hist = hist.astype("float")
     hist /= hist.sum() + 1e-7
     return hist
+
+
+def sift(img):
+    gray_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    # keypoints
+    sift = cv.xfeatures2d.SIFT_create()
+    keypoints_1, descriptors_1 = sift.detectAndCompute(img, None)
+
+    res = cv.drawKeypoints(gray_img, keypoints_1, img)
+    return res

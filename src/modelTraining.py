@@ -137,7 +137,7 @@ def logisticRegression(x_train, x_test, y_train, y_test):
 def train(x_train, y_train):
     # Train an SVM model using the training data
     svm_model = SVC(
-        C=0.1, class_weight=None, coef0=1, degree=4, gamma=0.1, kernel="poly"
+        C=0.1, class_weight=None, coef0=1, degree=4, gamma=0.1, kernel="poly", probability=True
     )
     svm_model.fit(x_train, y_train)
     joblib.dump(svm_model, "../models/svm_model.pkl")
@@ -145,5 +145,7 @@ def train(x_train, y_train):
 
 
 def test(x_test, y_test, model):
+    print(model.predict_proba(x_test) * 100)
     accuracy = model.score(x_test, y_test)
+    print(accuracy * 100)
     return accuracy

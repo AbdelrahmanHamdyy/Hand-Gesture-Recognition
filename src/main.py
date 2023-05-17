@@ -5,6 +5,7 @@ from modelTraining import *
 from performance import runPerformance
 from sklearn.metrics import accuracy_score
 from predict import generateReport
+import joblib
 
 
 def calcAccuracy(x_train, x_test, y_train, y_test):
@@ -39,33 +40,53 @@ def calcAccuracy(x_train, x_test, y_train, y_test):
 def sample(x=None, y=None):
     # train(x, y)
     predictions = generateReport()
-    s0 = str(0)
-    s1 = str(1)
-    s2 = str(2)
-    s3 = str(3)
-    s4 = str(4)
-    s5 = str(5)
-    true = [s0, s0, s0, s0, s1, s1, s1, s2, s2, s2, s2,
-            s3, s3, s3, s3, s3, s3, s4, s4, s4, s4, s5, s5, s5]
+    true = []
+    with open('../results.txt', 'r') as file:
+        for line in file:
+            true.append(line.strip())
+    # -------------------------------------------
+    # for i in range(6):
+    #     if i == 2:
+    #         true = true + ([str(i)] * 15)
+    #     else:
+    #         true = true + ([str(i)] * 17)
     accuracy = accuracy_score(true, predictions)
     print("Accuracy: {:.3f}%".format(accuracy * 100))
 
 
+def sabry():
+    # x, y = saveFeatures()
+    # model = train(x, y)
+    model = joblib.load("../models/svm_model.pkl")
+
+    true = []
+    with open('../results.txt', 'r') as file:
+        for line in file:
+            true.append(line.strip())
+    imgs = readImages("../data4")
+    x_test = getFeatures(imgs)
+    test(x_test, true, model)
+
+
 def run():
     # Extract Features
-    x, y = saveFeatures()
+    x, y, features = saveFeatures()
 
     # Save features to CSV file
     saveToCSV(features, "../output.csv")
 
     # Split Training and Test Data
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+    # for i in range(15):
+    #     x_train, x_test, y_train, y_test = train_test_split(
+    #         x, y, test_size=0.2)
+    #     calcAccuracy(x_train, x_test, y_train, y_test)
     # runPerformance(x_train, x_test, y_train, y_test)
-    # sample()
-
+    train(x, y)
+    # sample(x, y)
+    # sabry()
     # Train and Test Model using different classifiers
-    calcAccuracy(x_train, x_test, y_train, y_test)
 
 
 if __name__ == "__main__":
-    run()
+    # run()
+    sample()
