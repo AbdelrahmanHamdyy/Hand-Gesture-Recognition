@@ -1,6 +1,6 @@
 import os
 
-folder_path = 'data'
+folder_path = 'nu3'
 i = 0
 for filename in os.listdir(folder_path):
     file_path = os.path.join(folder_path, filename)

@@ -295,20 +295,20 @@ def newPreprocess(img):
 
     # Structuring Element for Morphological Operations
     dilationkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15, 15))
-    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (11, 11))
+    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5))
 
     # Erosion
-    erodedImg = cv.erode(segmentedImg, erosionkernel, iterations=2)
+    erodedImg = cv.erode(segmentedImg, erosionkernel, iterations=3)
 
     # Dilation
-    dilatedImg = cv.dilate(erodedImg, dilationkernel, iterations=5)
+    dilatedImg = cv.dilate(erodedImg, dilationkernel, iterations=7)
 
     # Region Filling using Contours
     imgWithContours = contours(dilatedImg)
 
     # Erosion again
-    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (11, 11))
-    erodedImg = cv.erode(imgWithContours, erosionkernel, iterations=5)
+    erosionkernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15, 15))
+    erodedImg = cv.erode(imgWithContours, erosionkernel, iterations=7)
 
     # Apply Mask
     maskedImg = restoreImage(erodedImg, img)

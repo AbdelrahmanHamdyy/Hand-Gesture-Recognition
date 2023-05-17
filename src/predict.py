@@ -3,7 +3,7 @@ from featureExtraction import getFeatures
 from timeit import default_timer as timer
 import joblib
 
-DATA_SOURCE = '../data4'
+DATA_SOURCE = '../nu3'
 predictions = []
 
 

@@ -73,14 +73,15 @@ def run():
     x, y, features = saveFeatures()
 
     # Save features to CSV file
-    saveToCSV(features, "../output.csv")
+    # saveToCSV(features, "../output.csv")
 
     # Split Training and Test Data
-    for i in range(10):
-        x_train, x_test, y_train, y_test = train_test_split(
-            x, y, test_size=0.2)
-        calcAccuracy(x_train, x_test, y_train, y_test)
+    # for i in range(15):
+    #     x_train, x_test, y_train, y_test = train_test_split(
+    #         x, y, test_size=0.2)
+    #     calcAccuracy(x_train, x_test, y_train, y_test)
     # runPerformance(x_train, x_test, y_train, y_test)
+    train(x, y)
     # sample(x, y)
     # sabry()
     # Train and Test Model using different classifiers
