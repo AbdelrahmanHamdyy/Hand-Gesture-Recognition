@@ -31,7 +31,7 @@ def saveFeatures():
     y = []
     for i in range(6):
         INPUT_PATH = DATA + str(i)
-        imgs = readImages(INPUT_PATH, i)
+        imgs = readImages(INPUT_PATH)
         imgs = augmentImages(imgs)
         features = getFeatures(imgs)
         featuresDict[str(i)] = features

@@ -10,7 +10,7 @@ from preprocessing import *
 import joblib
 
 
-def readImages(dataPath, num=0, sort=False):
+def readImages(dataPath, sort=False):
     files = [f for f in listdir(dataPath) if isfile(join(dataPath, f))]
     x = []
     if sort:
