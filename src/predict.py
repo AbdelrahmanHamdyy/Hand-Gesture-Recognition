@@ -16,6 +16,7 @@ def generateReport():
     resultFile.close()
     timeFile = open("time.txt", "w")
     timeFile.close()
+
     # Now open the two files in append mode to append the needed results of each image
     resultFile = open("result.txt", "a")
     timeFile = open("time.txt", "a")
@@ -33,8 +34,5 @@ def generateReport():
         resultFile.write("\n")
     timeFile.close()
     resultFile.close()
-    print("Done! 🎉")
+
     return predictions
-
-
-# generateReport()

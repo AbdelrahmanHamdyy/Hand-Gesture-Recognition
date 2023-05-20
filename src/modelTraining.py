@@ -12,8 +12,10 @@ import joblib
 
 def KNN(x_train, x_test, y_train, y_test, k):
     knn = KNeighborsClassifier(n_neighbors=k)
+
     knn.fit(x_train, y_train)
     joblib.dump(knn, "../models/knn_model.pkl")
+
     # Make predictions on the test data and evaluate the model
     y_pred = knn.predict(x_test)
     accuracy = accuracy_score(y_test, y_pred)
@@ -26,23 +28,21 @@ def SVM(x_train, x_test, y_train, y_test):
     svm_model = SVC(
         C=0.1, class_weight=None, coef0=1, degree=4, gamma=0.1, kernel="poly"
     )
+
     svm_model.fit(x_train, y_train)
     joblib.dump(svm_model, "../models/svm_model3.pkl")
     accuracy = svm_model.score(x_test, y_test)
-    # ? Predict labels for the test data
+
     y_pred = svm_model.predict(x_test)
 
-    # return accuracy , predict labels and test labels
     return accuracy, y_pred, y_test
-
-
-# Gradient Boosting Classifier
 
 
 def GBC(x_train, x_test, y_train, y_test):
     # Train an SVM model using the training data
     model = GradientBoostingClassifier(
         max_depth=5, n_estimators=100, learning_rate=0.1)
+
     model.fit(x_train, y_train)
     joblib.dump(model, "../models/GBC_model.pkl")
     # Predict on testing data
@@ -60,8 +60,6 @@ def trainSVR(x_train, x_test, y_train, y_test):
     # Train model on training data
     model.fit(x_train, y_train)
     joblib.dump(model, "../models/SVR_model.pkl")
-    # # Predict on testing data
-    # y_pred = model.predict(x_test)
 
     # Calculate accuracy
     accuracy = model.score(x_test, y_test)
