@@ -63,7 +63,7 @@ pip install -r requirements.txt
 cd src
 ```
 
-- run the `main.py` file
+- Run the `main.py` file
 
 ```python
 python main.py

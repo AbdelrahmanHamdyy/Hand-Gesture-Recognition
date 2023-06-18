@@ -16,7 +16,7 @@ def getFeatures(imgs):
     features = []
     for img in imgs:
         # Preprocessing
-        img = newPreprocess(img)
+        img = preprocess(img)
 
         # HOG
         fd = hog(resize(img, (64*2, 128*2)), orientations=9,
@@ -30,11 +30,9 @@ def saveFeatures():
     x = []
     y = []
     for i in range(6):
-        print(i)
-        print("------------------------------")
         INPUT_PATH = DATA + str(i)
-        imgs = readImages(INPUT_PATH, i)
-        # imgs = augmentImages(imgs)
+        imgs = readImages(INPUT_PATH)
+        imgs = augmentImages(imgs)
         features = getFeatures(imgs)
         featuresDict[str(i)] = features
         x = x + features

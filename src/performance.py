@@ -25,10 +25,6 @@ def performanceMetrics(y_true, y_pred):
 
 
 def crossValidation(X, y):
-    # ? Generate sample data
-    # X = np.random.randn(100, 2)
-    # y = np.random.randint(0, 2, size=100)
-
     # Create a logistic regression model
     model = LogisticRegression()
 
@@ -56,9 +52,3 @@ def crossValidation(X, y):
 def runPerformance(x_train, x_test, y_train, y_test):
     _, y_pred, y_true = SVM(x_train, x_test, y_train, y_test)
     performanceMetrics(y_true, y_pred)
-    
-
-
-# ? for testing performance
-# if __name__ == "__main__":
-#     runPerformance()
