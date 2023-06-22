@@ -38,7 +38,17 @@
 <li> This project ranked <strong>1st place</strong> among 21 teams with 81% accuracy, tested on unseen dataset.</li>
 
 <li> Built using <a href="https://docs.python.org/3/">Python</a>.</li>
-<li> You can view <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/requirements.txt">Requirements libraries</a>.</li>
+<li> Using Libraries</li>
+<ul>
+<li>opencv</li>
+<li>numpy</li>
+<li>matplotlib</li>
+<li>pandas</li>
+<li>scikit_image</li>
+<li>scikit_learn</li>
+<li>seaborn</li>
+<li>joblib</li>
+</ul>
 <li>
 <a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a></li>
 </ul>
@@ -47,7 +57,7 @@
 
 ## <img  align= center width=50px height=50px src="https://c.tenor.com/HgX89Yku5V4AAAAi/to-the-moon.gif"> How To Run
 
-- First install the needed packages
+- First install the  <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/requirements.txt">needed packages</a>.</li> 
 
 ```sh
 pip install -r requirements.txt
