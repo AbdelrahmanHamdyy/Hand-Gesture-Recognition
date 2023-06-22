@@ -111,9 +111,7 @@ python main.py
 ## <img  align= center width=60px src="https://media0.giphy.com/media/j3nq3JkXp0bkFXcNlE/giphy.gif?cid=ecf05e47cftu8uth80woqhyl1kr7oy4m7zaihotdf9twrcaa&ep=v1_stickers_search&rid=giphy.gif&ct=s"> Modules
 <a id = "Preprocessing"></a>
 
-### Preprocessing Module
-
-<hr style="background-color: #4b4c60"></hr>
+### <img align= center width=50px src="https://media0.giphy.com/media/321AaGDATXT8dq4MDC/giphy.gif?cid=ecf05e47r2eazdcsf8tqp6diz0z2o24gcho6yy4kj4lu6ctb&ep=v1_stickers_search&rid=giphy.gif&ct=s">Preprocessing Module
 <ol>
 <li>Apply gamma correction to adjust lighting</li>
 <li>Segmentations</li>
@@ -131,7 +129,7 @@ python main.py
 </ol>
 <a id = "Feature"></a>
 
-### Feature Extraction Module
+### <img align= center height=60px src="https://media0.giphy.com/media/fw9KH5k7W2BVb78Wkq/200w.webp?cid=ecf05e472gayvziprwm50vr429mjzkk6lic31u4tegu821k7&ep=v1_stickers_search&rid=200w.webp&ct=s">Feature Extraction Module
 <ol>
 <li> Enter each image on Histogram of Oriented Gradients 
 (HOG)</li>
@@ -148,7 +146,7 @@ python main.py
 </ol>
 <a id = "Selection"></a>
 
-### Model Selection
+### <img align= center height=60px src="https://media0.giphy.com/media/YqJxBFX7cOPQSFO6gv/200w.webp?cid=ecf05e47q2pctv46mon3iqculvvgg8k8bruy7d5or1kf1jh8&ep=v1_stickers_search&rid=200w.webp&ct=s">Model Selection
 <ol>
 <li> Fitting training data and labeling into <strong>SVM model</strong></li>
 <li>Dumping model</li>
@@ -156,7 +154,7 @@ python main.py
 </ol>
 
 
-### Performance Module
+### <img align= center height=60px src="https://media2.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif?cid=ecf05e47s7yfhenqvyko8mhsuci17skn4q8fdik83l0k6j1m&ep=v1_stickers_search&rid=giphy.gif&ct=s">Performance Module
 
 <hr style="background-color: #4b4c60"></hr>
 
