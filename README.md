@@ -155,7 +155,7 @@ python main.py
 
 
 ### <img align= center height=60px src="https://media2.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif?cid=ecf05e47s7yfhenqvyko8mhsuci17skn4q8fdik83l0k6j1m&ep=v1_stickers_search&rid=giphy.gif&ct=s">Performance Module
-
+Calculate Confusion Matrix
 <hr style="background-color: #4b4c60"></hr>
 
 <a id ="Contributors"></a>
