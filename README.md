@@ -18,6 +18,7 @@
 
 - <a href ="#about"> 📙 Overview</a>
 - <a href ="#Started"> 💻 Get Started</a>
+- <a href ="#Pipeline"> ⛓️ Project Pipeline</a>
 - <a href ="#Contributors"> ✨ Contributors</a>
 - <a href ="#License"> 🔒 License</a>
 <hr style="background-color: #4b4c60"></hr>
@@ -83,7 +84,25 @@ python main.py
 <td>output needed time to classifier image </td>
 </tr>
 </table>
+
 <hr style="background-color: #4b4c60"></hr>
+
+<a id = "Pipeline"></a>
+
+## <img  align= center width=60px src="https://media3.giphy.com/media/JpHBXrvMkAiWdRemW8/giphy.gif?cid=ecf05e47foyhm8nq26e7mg0is4r80fd5m2khgyyfnn3ih5dc&ep=v1_stickers_search&rid=giphy.gif&ct=s"> Project Pipeline
+<ol>
+<li>📷 Read images</li>
+<li>🔁 Preprocessing</li>
+<li>💪 Get features</li>
+<li>🪓 Split Training and Test Data</li>
+<li>✅ Calculate accuracy</li>
+<li>👌 Calculate performance analysis</li>
+
+</ol>
+
+<hr style="background-color: #4b4c60"></hr>
+
+
 <a id ="Contributors"></a>
 
 ## <img  align="center" width= 70px height =55px src="https://media0.giphy.com/media/Xy702eMOiGGPzk4Zkd/giphy.gif?cid=ecf05e475vmf48k83bvzye3w2m2xl03iyem3tkuw2krpkb7k&rid=giphy.gif&ct=s"> Contributors 
