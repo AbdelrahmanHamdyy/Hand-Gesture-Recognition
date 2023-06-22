@@ -32,7 +32,7 @@
 <li> This project ranked 1st place among 21 teams with 81% accuracy, tested on unseen dataset.</li>
 
 <li> Built using <a href="https://docs.python.org/3/">Python</a>.</li>
-<li> You can view requirements libraries <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/requirements.txt">Requirements</a>.</li>
+<li> You can view <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/requirements.txt">Requirements libraries</a>.</li>
 <li>
 <a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a></li>
 </ul>
