@@ -35,7 +35,7 @@
 
 <ul>
 <li> Hand Gesture Recognition is machine learning project aim to recognize hand number from 0 => 5</li>
-<li> This project ranked 1st place among 21 teams with 81% accuracy, tested on unseen dataset.</li>
+<li> This project ranked <strong>1st place</strong> among 21 teams with 81% accuracy, tested on unseen dataset.</li>
 
 <li> Built using <a href="https://docs.python.org/3/">Python</a>.</li>
 <li> You can view <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/requirements.txt">Requirements libraries</a>.</li>
