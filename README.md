@@ -6,6 +6,8 @@
 </div>
 <div align="center">
    <img align="center" height="350px"  src="https://cdn.dribbble.com/users/108390/screenshots/1477721/countdown.gif" alt="logo">
+   <br>
+   <img align="center" height="350px"  src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGlocjUxNXhsdjE1Y3N4Y2txa3Ficjl2bGlxbDRpZHRzbzJ0NWhkayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RH8Cwr2yWNsmuPCBiO/giphy.gif" alt="logo">
 
    ### ”Hello, Let us help you to recognize hand Gesture 🖐️“
 </div>
