@@ -91,9 +91,9 @@ python main.py
 <table align="center" >
   <tr>
     <td align="center"><a href="https://github.com/AbdelrahmanHamdyy"><img src="https://avatars.githubusercontent.com/u/67989900?v=4" width="150;" alt=""/><br /><sub><b>Abdelrahman Hamdy</b></sub></a><br /></td>
-       <td align="center"><a href="https://github.com/ZeyadTarekk"><img src="https://avatars.githubusercontent.com/u/76125650?v=4" width="150;" alt=""/><br /><sub><b>Zeyad Tarek</b></sub></a><br /></td>
-     <td align="center"><a href="https://github.com/ZiadSheriif" ><img src="https://avatars.githubusercontent.com/u/78238570?v=4" width="150;" alt=""/><br /><sub><b>Ziad Sherif</b></sub></a><br />
+      <td align="center"><a href="https://github.com/ZiadSheriif" ><img src="https://avatars.githubusercontent.com/u/78238570?v=4" width="150;" alt=""/><br /><sub><b>Ziad Sherif</b></sub></a><br />
     </td>
+       <td align="center"><a href="https://github.com/ZeyadTarekk"><img src="https://avatars.githubusercontent.com/u/76125650?v=4" width="150;" alt=""/><br /><sub><b>Zeyad Tarek</b></sub></a><br /></td>
      <td align="center"><a href="https://github.com/EslamAsHhraf"><img src="https://avatars.githubusercontent.com/u/71986226?v=4" width="150;" alt=""/><br /><sub><b>Eslam Ashraf</b></sub></a><br /></td>
   </tr>
 </table>
