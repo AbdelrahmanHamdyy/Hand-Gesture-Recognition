@@ -49,8 +49,8 @@
 <li>seaborn</li>
 <li>joblib</li>
 </ul>
-<li>
-<a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a></li>
+<li>You can view
+<a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a> which using to train module</li>
 </ul>
 <hr style="background-color: #4b4c60"></hr>
 <a id = "Started"></a>
