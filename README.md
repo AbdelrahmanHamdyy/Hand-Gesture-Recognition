@@ -1,6 +1,6 @@
 <div align= >
 
-# <img align=center height=60px src="https://media2.giphy.com/media/M6dfISbyJ2Sizh0WPE/giphy.gif?cid=ecf05e47xr45cdvzgmsechrmkj3ljtquz1w77kupa2t8nrvy&ep=v1_stickers_search&rid=giphy.gif&ct=s"> Hand Gesture Recognition
+# <img align=center height=60px src="https://media1.giphy.com/media/YBypkW5Mlfz4znhCDD/giphy.gif?cid=ecf05e47pm5rbpvyte0zxbifp808lf554oysuxgmqjfaz04c&ep=v1_stickers_search&rid=giphy.gif&ct=s"> Hand Gesture Recognition
 
 
 </div>
