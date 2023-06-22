@@ -19,6 +19,11 @@
 - <a href ="#about"> 📙 Overview</a>
 - <a href ="#Started"> 💻 Get Started</a>
 - <a href ="#Pipeline"> ⛓️ Project Pipeline</a>
+- <a href ="#Modules">🤖  Modules</a>
+    - <a href="#Preprocessing">🔁 Preprocessing Module</a>
+    - <a href="#Feature">💪 Feature Extraction Module</a>
+    - <a href="#Selection">✅ Model Selection</a>
+    - <a href="#Performance">👌 Performance Module</a>
 - <a href ="#Contributors"> ✨ Contributors</a>
 - <a href ="#License"> 🔒 License</a>
 <hr style="background-color: #4b4c60"></hr>
@@ -101,7 +106,59 @@ python main.py
 </ol>
 
 <hr style="background-color: #4b4c60"></hr>
+<a id = "Modules"></a>
 
+## <img  align= center width=60px src="https://media0.giphy.com/media/j3nq3JkXp0bkFXcNlE/giphy.gif?cid=ecf05e47cftu8uth80woqhyl1kr7oy4m7zaihotdf9twrcaa&ep=v1_stickers_search&rid=giphy.gif&ct=s"> Modules
+<a id = "Preprocessing"></a>
+
+### Preprocessing Module
+
+<hr style="background-color: #4b4c60"></hr>
+<ol>
+<li>Apply gamma correction to adjust lighting</li>
+<li>Segmentations</li>
+<li>Convert image to YCbCr color space</li>
+<li>Skin masking</li>
+<li>Convert image to grayscale</li>
+<li>Convert original image to gray scale</li>
+<li>Erosion</li>
+<li>Dilation</li>
+<li>Draw left & right borders</li>
+<li>Region Filling using Contours</li>
+<li>Erosion</li>
+<li>Masking eroded the image with the original one</li>
+<li>Crop image to fit the hand exactly</li>
+</ol>
+<a id = "Feature"></a>
+
+### Feature Extraction Module
+<ol>
+<li> Enter each image on Histogram of Oriented Gradients 
+(HOG)</li>
+<ol>
+<li>Resizing</li>
+<li>Gradient Computation</li>
+<li>Cell Division</li>
+<li>Orientation Binning</li>
+<li>Histogram Calculations</li>
+<li>Block Normalization</li>
+<li>Feature Vector</li>
+</ol>
+<li>  Append array of features of each image in a list</li>
+</ol>
+<a id = "Selection"></a>
+
+### Model Selection
+<ol>
+<li> Fitting training data and labeling into <strong>SVM model</strong></li>
+<li>Dumping model</li>
+<li>Getting classified data</li>
+</ol>
+
+
+### Performance Module
+
+<hr style="background-color: #4b4c60"></hr>
 
 <a id ="Contributors"></a>
 
