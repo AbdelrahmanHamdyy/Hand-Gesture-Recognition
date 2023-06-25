@@ -97,7 +97,7 @@ python main.py
 </tr>
 <tr>
 <td>Time</td>
-<td>Time taken for classifying the image</td>
+<td>Time taken for classifying the images</td>
 </tr>
 </table>
 
@@ -128,15 +128,14 @@ python main.py
 <li>Resize image for faster preprocessing</li>
 <li>Apply gamma correction to adjust lighting</li>
 <li>Convert image to YCbCr color space</li>
-<li>SApply segmentation on the skin color</li>
+<li>Apply segmentation on the skin color</li>
 <li>Skin masking</li>
 <li>Convert the segmented & original image to grayscale</li>
 <li>Erosion using a 5x5 elliptic kernel</li>
 <li>Dilation using a 17x17 elliptic kernel</li>
-<li>Draw left & right borders</li>
 <li>Region Filling using Contours</li>
 <li>Erosion again to clean the image from outside</li>
-<li>Masking eroded the image with the original one</li>
+<li>Masking the eroded image with the original one</li>
 <li>Crop image to fit the hand exactly</li>
 </ol>
 <table>
