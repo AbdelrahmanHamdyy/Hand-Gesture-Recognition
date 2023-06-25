@@ -146,12 +146,12 @@ python main.py
 <th>Output</th>
 </thead>
 <tr>
-<td  align="center" width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/f1c1930b-9ed3-4722-a35c-ede006716b46"></td>
+<td  align="center" width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/d5aa550e-70f5-4fcd-b0cc-26df69c1dd19"></td>
 <td  align="center" width="15%"><img  height="250px" 
 src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/ed49e707-4c18-4264-90e6-ccc680431d08"></td>
 </tr>
 <tr>
-<td width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/27161f3e-dcb2-4af7-89f9-d156649f242e"></td>
+<td width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/f1c1930b-9ed3-4722-a35c-ede006716b46"></td>
 <td  align="center" width="15%"><img height="250px"src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/9b9b7458-478f-403b-9d0e-df12716516e8"></td>
 </tr>
 </table>
