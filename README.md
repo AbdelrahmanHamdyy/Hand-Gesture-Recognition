@@ -145,13 +145,12 @@ python main.py
 </thead>
 <tr>
 <td  align="center" width="15%"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538350-642e99c2-23f8-4dc3-b8d3-5a1694a195de.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075118Z&X-Amz-Expires=300&X-Amz-Signature=5921d041ff25c2e838ae1e83806a41c240ccbfad03721acf286e7d4b8d23138b&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
-<td  width="15%"><img  height="250px" 
-align="center"
+<td  align="center" width="15%"><img  height="250px" 
 src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538333-f40559d1-9460-4e07-a652-cc92d55105bb.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075129Z&X-Amz-Expires=300&X-Amz-Signature=9f4d8dd38b6353796773c89675f18529eadc41c94c555bccffecd956d4608e28&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
 </tr>
 <tr>
 <td width="15%"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538378-20fbfc6e-8cb9-49de-a1c2-81bc5e0a1da9.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075102Z&X-Amz-Expires=300&X-Amz-Signature=0ef1ab6dc0829a076c648a2736247ce900ee560e17fabe5d688f954864fa5a7f&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
-<td  width="15%"><img height="250px"src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538368-943a9466-7065-4f1a-98a0-548827702d85.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075048Z&X-Amz-Expires=300&X-Amz-Signature=174a41530bcefee3daacd27fbb1ddf592f4fbdaf5f4b3132a2bc5c5331b755cf&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
+<td  align="center" width="15%"><img height="250px"src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538368-943a9466-7065-4f1a-98a0-548827702d85.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075048Z&X-Amz-Expires=300&X-Amz-Signature=174a41530bcefee3daacd27fbb1ddf592f4fbdaf5f4b3132a2bc5c5331b755cf&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
 </tr>
 </table>
 <a id = "Feature"></a>
