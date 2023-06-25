@@ -8,7 +8,7 @@
    <img align="center" height="350px"  src="https://cdn.dribbble.com/users/662638/screenshots/4803914/thumbsupdribs2.gif" alt="logo">
    <br>
 
-   ### ”Hello, Let us help you to recognize hand Gesture 🖐️“
+   ### ”Hello, Let us help you easily recognize hand gestures 🖐️“
 </div>
 
 <p align="center"> 
@@ -34,7 +34,7 @@
 ## <img align="center"  height =50px src="https://user-images.githubusercontent.com/71986226/154076110-1233d7a8-92c2-4d79-82c1-30e278aa518a.gif"> Overview
 
 <ul>
-<li> Hand Gesture Recognition is machine learning project aim to recognize hand number from 0 => 5</li>
+<li> Hand Gesture Recognition is a machine learning project that aims to recognize hand signs from 0 => 5</li>
 <li> This project ranked <strong>1st place</strong> among 21 teams with 81% accuracy, tested on unseen dataset.</li>
 
 <li> Built using <a href="https://docs.python.org/3/">Python</a>.</li>
@@ -50,7 +50,7 @@
 <li>joblib</li>
 </ul>
 <li>You can view
-<a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a> which using to train module</li>
+<a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a> which was used to train the model</li>
 <li>You can view <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/Report.pdf"> Report</a></li>
 </ul>
 <hr style="background-color: #4b4c60"></hr>
@@ -85,7 +85,7 @@ cd src
 ```python
 python main.py
 ```
-- output 2 files <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/src/result.txt">"result.txt"</a> & <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/src/time.txt">"time.txt"</a>
+- Output 2 files <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/src/result.txt">"result.txt"</a> & <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/src/time.txt">"time.txt"</a>
 <table>
 <tr>
 <th>File</th>
@@ -93,11 +93,11 @@ python main.py
 </tr>
 <tr>
 <td>result</td>
-<td>output classification result of every image by order </td>
+<td>Classification result of every image by order</td>
 </tr>
 <tr>
 <td>Time</td>
-<td>output needed time to classifier image </td>
+<td>Time taken for classifying the image</td>
 </tr>
 </table>
 
@@ -125,20 +125,19 @@ python main.py
 
 ### <img align= center width=50px src="https://media0.giphy.com/media/321AaGDATXT8dq4MDC/giphy.gif?cid=ecf05e47r2eazdcsf8tqp6diz0z2o24gcho6yy4kj4lu6ctb&ep=v1_stickers_search&rid=giphy.gif&ct=s">Preprocessing Module
 <ol>
+<li>Resize image for faster preprocessing</li>
 <li>Apply gamma correction to adjust lighting</li>
-<li>Segmentations</li>
 <li>Convert image to YCbCr color space</li>
+<li>SApply segmentation on the skin color</li>
 <li>Skin masking</li>
-<li>Convert image to grayscale</li>
-<li>Convert original image to gray scale</li>
-<li>Erosion</li>
-<li>Dilation</li>
+<li>Convert the segmented & original image to grayscale</li>
+<li>Erosion using a 5x5 elliptic kernel</li>
+<li>Dilation using a 17x17 elliptic kernel</li>
 <li>Draw left & right borders</li>
 <li>Region Filling using Contours</li>
-<li>Erosion</li>
+<li>Erosion again to clean the image from outside</li>
 <li>Masking eroded the image with the original one</li>
 <li>Crop image to fit the hand exactly</li>
-<li>Augmentation each image to enhance accuracy </li>
 </ol>
 <table>
 <thead>
@@ -159,8 +158,8 @@ src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/719862
 
 ### <img align= center height=60px src="https://media0.giphy.com/media/fw9KH5k7W2BVb78Wkq/200w.webp?cid=ecf05e472gayvziprwm50vr429mjzkk6lic31u4tegu821k7&ep=v1_stickers_search&rid=200w.webp&ct=s">Feature Extraction Module
 <ol>
-<li> Enter each image on Histogram of Oriented Gradients 
-(HOG)</li>
+<li>Apply data augmentation on each image to enhance accuracy </li>
+<li>Input each image to the Histogram of Oriented Gradients (HOG)</li>
 <ol>
 <li>Resizing</li>
 <li>Gradient Computation</li>
@@ -170,13 +169,13 @@ src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/719862
 <li>Block Normalization</li>
 <li>Feature Vector</li>
 </ol>
-<li>  Append array of features of each image in a list</li>
+<li>Append array of features of each image in a list</li>
 </ol>
 <a id = "Selection"></a>
 
 ### <img align= center height=60px src="https://media0.giphy.com/media/YqJxBFX7cOPQSFO6gv/200w.webp?cid=ecf05e47q2pctv46mon3iqculvvgg8k8bruy7d5or1kf1jh8&ep=v1_stickers_search&rid=200w.webp&ct=s">Model Selection
 <ol>
-<li> Fitting training data and labeling into <strong>SVM model</strong></li>
+<li>Fitting training data and labels into <strong>SVM model</strong></li>
 <li>Dumping model</li>
 <li>Getting classified data</li>
 </ol>
