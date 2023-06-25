@@ -144,7 +144,7 @@ python main.py
 <th>Output</th>
 </thead>
 <tr>
-<td  align="center" width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/d5aa550e-70f5-4fcd-b0cc-26df69c1dd19"></td>
+<td  align="center" width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/8f4e3133-bf46-479a-8299-0c4b14c177a3"></td>
 <td  align="center" width="15%"><img  height="250px" 
 src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/2dfd3cdf-b66c-4c7f-af2d-68fbe2bf9ddd"></td>
 </tr>
