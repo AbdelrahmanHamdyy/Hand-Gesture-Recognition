@@ -138,6 +138,16 @@ python main.py
 <li>Masking eroded the image with the original one</li>
 <li>Crop image to fit the hand exactly</li>
 </ol>
+<table>
+<thead>
+<th>Input</th>
+<th>Output</th>
+</thead>
+<tr>
+<td><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/642e99c2-23f8-4dc3-b8d3-5a1694a195de"></td>
+<td><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/f40559d1-9460-4e07-a652-cc92d55105bb"></td>
+</tr>
+</table>
 <a id = "Feature"></a>
 
 ### <img align= center height=60px src="https://media0.giphy.com/media/fw9KH5k7W2BVb78Wkq/200w.webp?cid=ecf05e472gayvziprwm50vr429mjzkk6lic31u4tegu821k7&ep=v1_stickers_search&rid=200w.webp&ct=s">Feature Extraction Module
