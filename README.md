@@ -51,7 +51,7 @@
 </ul>
 <li>You can view
 <a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a> which was used to train the model</li>
-<li>You can view <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/Report.pdf"> Report</a></li>
+<li>Project <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/Report.pdf"> Report</a></li>
 </ul>
 <hr style="background-color: #4b4c60"></hr>
 <a id = "Started"></a>
@@ -92,7 +92,7 @@ python main.py
 <th>Description</th>
 </tr>
 <tr>
-<td>result</td>
+<td>Result</td>
 <td>Classification result of every image by order</td>
 </tr>
 <tr>
@@ -113,7 +113,7 @@ python main.py
 <li>💪 Get features</li>
 <li>🪓 Split Training and Test Data</li>
 <li>✅ Calculate accuracy</li>
-<li>👌 Calculate performance analysis</li>
+<li>📈 Performance analysis</li>
 
 </ol>
 
@@ -175,14 +175,14 @@ src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/719862
 
 ### <img align= center height=60px src="https://media0.giphy.com/media/YqJxBFX7cOPQSFO6gv/200w.webp?cid=ecf05e47q2pctv46mon3iqculvvgg8k8bruy7d5or1kf1jh8&ep=v1_stickers_search&rid=200w.webp&ct=s">Model Selection
 <ol>
-<li>Fitting training data and labels into <strong>SVM model</strong></li>
+<li>Fitting training data and labels into an <strong>SVM model</strong></li>
 <li>Dumping model</li>
 <li>Getting classified data</li>
 </ol>
 
 
 ### <img align= center height=60px src="https://media2.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif?cid=ecf05e47s7yfhenqvyko8mhsuci17skn4q8fdik83l0k6j1m&ep=v1_stickers_search&rid=giphy.gif&ct=s">Performance Module
-<strong>Calculate Confusion Matrix</strong>
+<strong>Compute Confusion Matrix</strong>
 <br>
 <div align="center">
 <img  width="75%" src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/27161f3e-dcb2-4af7-89f9-d156649f242e">
