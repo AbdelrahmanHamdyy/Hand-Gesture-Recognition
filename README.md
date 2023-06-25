@@ -146,11 +146,11 @@ python main.py
 <tr>
 <td  align="center" width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/d5aa550e-70f5-4fcd-b0cc-26df69c1dd19"></td>
 <td  align="center" width="15%"><img  height="250px" 
-src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/ed49e707-4c18-4264-90e6-ccc680431d08"></td>
+src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/2dfd3cdf-b66c-4c7f-af2d-68fbe2bf9ddd"></td>
 </tr>
 <tr>
-<td width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/f1c1930b-9ed3-4722-a35c-ede006716b46"></td>
-<td  align="center" width="15%"><img height="250px"src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/9b9b7458-478f-403b-9d0e-df12716516e8"></td>
+<td width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/35d6a4a4-b84f-4743-b1cf-0b363f459db8"></td>
+<td  align="center" width="15%"><img height="250px"src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/6114c5d5-9d2d-40b3-bfe5-1b037f5d467a"></td>
 </tr>
 </table>
 <a id = "Feature"></a>
@@ -184,7 +184,7 @@ src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/719862
 <strong>Compute Confusion Matrix</strong>
 <br>
 <div align="center">
-<img  width="75%" src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/27161f3e-dcb2-4af7-89f9-d156649f242e">
+<img  width="75%" src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/c68e7987-7dc3-48d1-bb2b-4414316b3fce">
 </div>
 <hr style="background-color: #4b4c60"></hr>
 
