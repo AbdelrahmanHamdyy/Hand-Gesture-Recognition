@@ -146,9 +146,9 @@ python main.py
 <th>Output</th>
 </thead>
 <tr>
-<td  align="center" width="15%"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538350-642e99c2-23f8-4dc3-b8d3-5a1694a195de.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075118Z&X-Amz-Expires=300&X-Amz-Signature=5921d041ff25c2e838ae1e83806a41c240ccbfad03721acf286e7d4b8d23138b&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
+<td  align="center" width="15%"><img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/9de8b2ef-4607-4c54-b8ad-98b8559f0f3f"></td>
 <td  align="center" width="15%"><img  height="250px" 
-src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538333-f40559d1-9460-4e07-a652-cc92d55105bb.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075129Z&X-Amz-Expires=300&X-Amz-Signature=9f4d8dd38b6353796773c89675f18529eadc41c94c555bccffecd956d4608e28&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
+src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/9b9b7458-478f-403b-9d0e-df12716516e8"></td>
 </tr>
 <tr>
 <td width="15%"><img src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248538378-20fbfc6e-8cb9-49de-a1c2-81bc5e0a1da9.JPG?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T075102Z&X-Amz-Expires=300&X-Amz-Signature=0ef1ab6dc0829a076c648a2736247ce900ee560e17fabe5d688f954864fa5a7f&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383"></td>
@@ -186,7 +186,7 @@ src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/24853
 <strong>Calculate Confusion Matrix</strong>
 <br>
 <div align="center">
-<img  width="75%" src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248539905-67634a34-4b23-46a4-8ba5-9bcacf1b4e3b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T081756Z&X-Amz-Expires=300&X-Amz-Signature=8a20205cbe6d10ae8f6d7451e395dd0b04defb64d7dba8a9c2c38344a0d35f7c&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383">
+<img  width="75%" src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/27161f3e-dcb2-4af7-89f9-d156649f242e">
 </div>
 <hr style="background-color: #4b4c60"></hr>
 
