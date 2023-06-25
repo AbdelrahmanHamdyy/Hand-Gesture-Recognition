@@ -86,7 +86,6 @@ cd src
 python main.py
 ```
 - output 2 files <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/src/result.txt">"result.txt"</a> & <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/src/time.txt">"time.txt"</a>
-
 <table>
 <tr>
 <th>File</th>
@@ -102,6 +101,7 @@ python main.py
 </tr>
 </table>
 
+- Features are saved in `./output.csv `
 <hr style="background-color: #4b4c60"></hr>
 
 <a id = "Pipeline"></a>
