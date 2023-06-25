@@ -182,6 +182,7 @@ src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/24853
 
 ### <img align= center height=60px src="https://media2.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif?cid=ecf05e47s7yfhenqvyko8mhsuci17skn4q8fdik83l0k6j1m&ep=v1_stickers_search&rid=giphy.gif&ct=s">Performance Module
 Calculate Confusion Matrix
+<img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/67634a34-4b23-46a4-8ba5-9bcacf1b4e3b">
 <hr style="background-color: #4b4c60"></hr>
 
 <a id ="Contributors"></a>
