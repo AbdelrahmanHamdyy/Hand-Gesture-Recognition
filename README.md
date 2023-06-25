@@ -51,6 +51,7 @@
 </ul>
 <li>You can view
 <a href="https://www.kaggle.com/datasets/evernext10/hand-gesture-of-the-colombian-sign-language">Data Set</a> which using to train module</li>
+<li>You can view <a href="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/blob/main/Report.pdf"> Report</a></li>
 </ul>
 <hr style="background-color: #4b4c60"></hr>
 <a id = "Started"></a>
@@ -137,7 +138,7 @@ python main.py
 <li>Erosion</li>
 <li>Masking eroded the image with the original one</li>
 <li>Crop image to fit the hand exactly</li>
-<li>Augmentation each image to  </li>
+<li>Augmentation each image to enhance accuracy </li>
 </ol>
 <table>
 <thead>
