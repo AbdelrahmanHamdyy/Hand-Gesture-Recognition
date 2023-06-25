@@ -137,6 +137,7 @@ python main.py
 <li>Erosion</li>
 <li>Masking eroded the image with the original one</li>
 <li>Crop image to fit the hand exactly</li>
+<li>Augmentation each image to  </li>
 </ol>
 <table>
 <thead>
@@ -181,8 +182,11 @@ src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/24853
 
 
 ### <img align= center height=60px src="https://media2.giphy.com/media/uhQuegHFqkVYuFMXMQ/giphy.gif?cid=ecf05e47s7yfhenqvyko8mhsuci17skn4q8fdik83l0k6j1m&ep=v1_stickers_search&rid=giphy.gif&ct=s">Performance Module
-Calculate Confusion Matrix
-<img src="https://github.com/AbdelrahmanHamdyy/Hand-Gesture-Recognition/assets/71986226/67634a34-4b23-46a4-8ba5-9bcacf1b4e3b">
+<strong>Calculate Confusion Matrix</strong>
+<br>
+<div align="center">
+<img  width="75%" src="https://github-production-user-asset-6210df.s3.amazonaws.com/71986226/248539905-67634a34-4b23-46a4-8ba5-9bcacf1b4e3b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230625T081756Z&X-Amz-Expires=300&X-Amz-Signature=8a20205cbe6d10ae8f6d7451e395dd0b04defb64d7dba8a9c2c38344a0d35f7c&X-Amz-SignedHeaders=host&actor_id=71986226&key_id=0&repo_id=627202383">
+</div>
 <hr style="background-color: #4b4c60"></hr>
 
 <a id ="Contributors"></a>
